@@ -1,0 +1,89 @@
+{
+  "name": "طالب | Talib Learning Hub",
+  "short_name": "طالب | Talib",
+  "description": "منصة طالب الأكاديمية الشاملة لإدارة المحاضرات، الجداول، الامتحانات، والتواصل الذكي مع المساعد الأكاديمي.",
+  "start_url": "/",
+  "id": "com.talib.academic.hub",
+  "display": "standalone",
+  "background_color": "#F8F4ED",
+  "theme_color": "#1B5E4B",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "ar",
+  "scope": "/",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "المقررات والمحاضرات",
+      "short_name": "المقررات",
+      "description": "تصفح المقررات الأكاديمية والمحاضرات والملفات",
+      "url": "/#courses",
+      "icons": [
+        {
+          "src": "/icons/shortcut-courses.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "المساعد الأكاديمي الذكي",
+      "short_name": "المساعد الذكي",
+      "description": "طرح الأسئلة وتلخيص المحاضرات بالذكاء الاصطناعي",
+      "url": "/#ai-chat",
+      "icons": [
+        {
+          "src": "/icons/shortcut-ai.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "الجدول الدراسي",
+      "short_name": "الجدول",
+      "description": "عرض مواعيد المحاضرات والقاعات الأسبوعية",
+      "url": "/#schedule",
+      "icons": [
+        {
+          "src": "/icons/shortcut-schedule.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "جدول الاختبارات",
+      "short_name": "الاختبارات",
+      "description": "متابعة تواريخ وأماكن الامتحانات القادمة",
+      "url": "/#exams",
+      "icons": [
+        {
+          "src": "/icons/shortcut-exams.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}
