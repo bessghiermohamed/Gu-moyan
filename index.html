@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>طالب | Tâlib - المنصة الأكاديمية الجامعية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>طالب | Talib - المنصة الأكاديمية الجامعية</title>
   
   <!-- Web App Manifest & PWA Meta -->
   <link rel="manifest" href="manifest.json">
@@ -13,10 +13,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="طالب">
   
-  <!-- Fonts: Cairo & Google Material Symbols -->
+  <!-- Fonts: Cairo & Google Material Symbols & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Markdown parser for AI responses -->
@@ -24,10 +24,10 @@
 
   <style>
     /* ==========================================================================
-       1. MATERIAL DESIGN 3 & TALIB COLOR TOKENS (Identical to Android Compose)
+       1. MATERIAL DESIGN 3 & ANDROID COMPOSE DESIGN TOKENS
        ========================================================================== */
     :root {
-      /* Academic Emerald & Cream Palette (Default Android Theme) */
+      /* Academic Emerald & Cream (Talib Academic Light Theme) */
       --talib-emerald: #1B5E4B;
       --talib-emerald-dark: #0F3D30;
       --talib-emerald-light: #2E7D62;
@@ -44,91 +44,70 @@
       --talib-bronze-light: #E4C3A9;
       --talib-bronze-container: #F7ECE3;
 
-      /* Active theme variables */
+      --talib-purple: #8B5CF6;
+      --talib-purple-dark: #6D28D9;
+      --talib-crimson: #EF4444;
+      --talib-crimson-dark: #B91C1C;
+
+      /* Active theme bindings */
       --primary: var(--talib-emerald);
       --primary-dark: var(--talib-emerald-dark);
       --primary-light: var(--talib-emerald-light);
       --primary-container: var(--talib-emerald-container);
       --on-primary-container: var(--talib-emerald-on-container);
+      --on-primary: #FFFFFF;
 
       --bg-color: #F8F4ED;
       --surface-color: #FFFFFF;
-      --surface-card: #FCFAF5;
+      --surface-card: #FFFFFF;
       --surface-variant: #F1ECE4;
+      --on-surface: #1B2420;
+      --on-surface-variant: #5B6963;
       --border-color: #E8DFD3;
       
-      --text-main: #1B2420;
-      --text-secondary: #5B6963;
-      --text-muted: #8A9892;
-
       --gold: #F59E0B;
       --green: #10B981;
       --blue: #3B82F6;
       --crimson: #EF4444;
-      --purple: #8B5CF6;
+      --cyan: #06B6D4;
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(27, 94, 75, 0.08);
+      --shadow-lg: 0 14px 36px rgba(27, 94, 75, 0.14);
+      --shadow-card: 0 10px 20px rgba(0, 0, 0, 0.08);
 
       --radius-sm: 10px;
       --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-xl: 32px;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-md: 0 6px 20px rgba(27, 94, 75, 0.08);
-      --shadow-lg: 0 12px 32px rgba(27, 94, 75, 0.14);
-      --shadow-elevation: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --radius-lg: 20px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
     }
 
-    /* Dark Mode (Matching TalibAcademicDark in Android Compose) */
+    /* Dark Mode (TalibAcademicDark Compose Replica) */
     body.dark-mode {
       --bg-color: #0C1D18;
       --surface-color: #142B23;
-      --surface-card: #19362C;
-      --surface-variant: #1D3B31;
+      --surface-card: #18332A;
+      --surface-variant: #1E3E33;
+      --on-surface: #F4F9F6;
+      --on-surface-variant: #ADC1B9;
       --border-color: #24473C;
       
-      --text-main: #F4F9F6;
-      --text-secondary: #ADC1B9;
-      --text-muted: #7E968E;
-
       --primary: #2E8A6E;
+      --primary-dark: #1E6650;
+      --primary-light: #48AC8D;
       --primary-container: #1D4337;
       --on-primary-container: #D4ECE3;
-      
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
-      --shadow-md: 0 6px 20px rgba(0,0,0,0.4);
-      --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
-    }
+      --on-primary: #FFFFFF;
 
-    /* Modern Violet Palette (Matching Android Alternative Theme) */
-    body.violet-mode {
-      --primary: #8B5CF6;
-      --primary-dark: #6D28D9;
-      --primary-light: #DDD6FE;
-      --primary-container: #EDE9FE;
-      --on-primary-container: #371B76;
-      --bg-color: #F3F4F6;
-      --surface-color: #FFFFFF;
-      --surface-card: #FFFFFF;
-      --surface-variant: #F9FAFB;
-      --border-color: #E5E7EB;
-      --text-main: #111827;
-      --text-secondary: #4B5563;
-    }
-
-    body.violet-mode.dark-mode {
-      --bg-color: #0F172A;
-      --surface-color: #1E293B;
-      --surface-card: #1E293B;
-      --surface-variant: #334155;
-      --border-color: #334155;
-      --text-main: #F8FAFC;
-      --text-secondary: #94A3B8;
-      --primary: #A78BFA;
-      --primary-container: #2E1065;
-      --on-primary-container: #EDE9FE;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.45);
+      --shadow-lg: 0 14px 36px rgba(0,0,0,0.6);
+      --shadow-card: 0 10px 20px rgba(0,0,0,0.4);
     }
 
     /* ==========================================================================
-       2. GLOBAL RESETS & ANDROID-LIKE APP CONTAINER
+       2. RESET & ANDROID EMULATOR / PHONE WRAPPER
        ========================================================================== */
     * {
       box-sizing: border-box;
@@ -144,62 +123,113 @@
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
+      background-color: #121E1A;
+      color: var(--on-surface);
       display: flex;
       justify-content: center;
+      align-items: flex-start;
       min-height: 100vh;
       overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
-    /* Android App Frame Simulator (Centered with Max Width on Desktop, Full Screen on Mobile) */
-    #app-container {
+    /* Android Screen Frame Container */
+    #android-frame {
       width: 100%;
-      max-width: 520px;
+      max-width: 480px;
       min-height: 100vh;
       background-color: var(--bg-color);
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease;
+      overflow: hidden;
     }
 
-    @media (min-width: 600px) {
-      #app-container {
-        border-left: 1px solid var(--border-color);
-        border-right: 1px solid var(--border-color);
+    @media (min-width: 540px) {
+      body {
+        padding: 20px 0;
+        background: radial-gradient(circle at top, #1A332B 0%, #0A1210 100%);
       }
+      #android-frame {
+        border-radius: 36px;
+        min-height: 92vh;
+        max-height: 94vh;
+        overflow-y: auto;
+        border: 4px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1);
+        scrollbar-width: none;
+      }
+      #android-frame::-webkit-scrollbar { display: none; }
     }
 
     /* ==========================================================================
-       3. TOP APP BAR (HeaderSection.kt Replica)
+       3. TOP STATUS BAR & HEADER SECTION (HeaderSection.kt Replica)
        ========================================================================== */
-    .top-app-bar {
+    .top-header {
       position: sticky;
       top: 0;
       z-index: 100;
       background-color: var(--surface-color);
       border-bottom: 1px solid var(--border-color);
-      padding: 12px 16px;
+      padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
 
-    .top-app-bar .brand-info {
+    .top-header .brand-box {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .btn-back {
+    .header-btn-back {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: rgba(27, 94, 75, 0.12);
+      border: none;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+    .header-btn-back:active { transform: scale(0.9); }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-size: 11.5px;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-button {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: rgba(27, 94, 75, 0.1);
+      background: rgba(27, 94, 75, 0.1);
       border: none;
       color: var(--primary);
       display: flex;
@@ -209,109 +239,74 @@
       font-size: 16px;
       transition: transform 0.2s, background-color 0.2s;
     }
-    .btn-back:active { transform: scale(0.92); }
+    .icon-button:active { transform: scale(0.9); }
 
-    .brand-title {
-      font-size: 17px;
-      font-weight: 900;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .brand-title span.badge {
-      font-size: 10px;
-      font-weight: 700;
-      background-color: var(--primary-container);
-      color: var(--primary);
-      padding: 2px 6px;
-      border-radius: 6px;
-    }
-
-    .brand-subtitle {
-      font-size: 11px;
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    .top-app-bar .actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 15px;
-      transition: all 0.2s;
-    }
-    .icon-btn:hover {
-      background-color: var(--surface-variant);
-      color: var(--primary);
-    }
-    .icon-btn:active { transform: scale(0.92); }
-
-    .icon-btn.rotating {
-      animation: spin 1s linear infinite;
+    .icon-button.rotating i {
+      animation: spin 0.9s linear infinite;
     }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
+    .btn-admin-exit {
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 11.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
     /* ==========================================================================
-       4. GLOBAL LOADING INDICATOR
+       4. GLOBAL LOADING BAR (GlobalLoadingIndicator.kt Replica)
        ========================================================================== */
     #global-loader {
       position: sticky;
-      top: 65px;
+      top: 60px;
       z-index: 99;
-      background: linear-gradient(90deg, var(--primary), var(--talib-bronze));
-      color: #fff;
-      font-size: 12px;
+      background: linear-gradient(90deg, var(--talib-emerald), var(--talib-bronze));
+      color: #FFFFFF;
+      font-size: 11.5px;
       font-weight: 700;
       padding: 6px 16px;
       display: none;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      animation: slideDown 0.3s ease;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: dropDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+    @keyframes dropDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
 
     /* ==========================================================================
-       5. SCREEN MAIN CONTENT & ROUTING
+       5. SCREEN VIEWS CONTAINER & SCROLL
        ========================================================================== */
-    .screen-content {
+    .app-screen-body {
       flex: 1;
-      padding: 16px 16px 100px 16px;
+      padding: 14px 16px 110px 16px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      animation: fadeIn 0.25s ease-out;
+      animation: screenEnter 0.2s ease-out;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes screenEnter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    .view-section { display: none; }
-    .view-section.active { display: flex; flex-direction: column; gap: 16px; }
+    .screen-view { display: none; flex-direction: column; gap: 14px; width: 100%; }
+    .screen-view.active { display: flex; }
 
     /* ==========================================================================
        6. HOME SCREEN (HomeScreen.kt Replica)
        ========================================================================== */
-    /* 1. Hero Card */
-    .hero-card {
+    /* 1. Hero Student Card */
+    .hero-banner {
       position: relative;
       height: 180px;
-      border-radius: var(--radius-lg);
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -319,41 +314,42 @@
       background: linear-gradient(135deg, #1B5E4B 0%, #0F3D30 100%);
       color: #FFFFFF;
     }
-    .hero-card::before {
+    .hero-banner::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle at top right, rgba(200, 149, 108, 0.3), transparent 70%),
-                  linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+      background: radial-gradient(circle at top right, rgba(200, 149, 108, 0.35), transparent 70%),
+                  linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
       z-index: 1;
     }
-    .hero-content {
+    .hero-top-row {
       position: relative;
       z-index: 2;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
-    .hero-greeting {
-      font-size: 19px;
+    .hero-name {
+      font-size: 18px;
       font-weight: 900;
       margin-bottom: 2px;
+      letter-spacing: -0.2px;
     }
-    .hero-sub {
+    .hero-subtrack {
       font-size: 12px;
       opacity: 0.85;
       font-weight: 500;
     }
-    .hero-group-badge {
-      background: var(--primary-light);
-      color: #fff;
+    .hero-badge-group {
+      background-color: var(--primary);
+      color: #FFFFFF;
       font-size: 11px;
       font-weight: 800;
       padding: 4px 10px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .hero-stats-bar {
+    .hero-stats-row {
       position: relative;
       z-index: 2;
       background: rgba(255, 255, 255, 0.15);
@@ -364,69 +360,73 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .hero-stats-bar .gpa-box {
+    .hero-stats-row .gpa-label {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 12px;
     }
-    .hero-stats-bar .gpa-val {
+    .hero-stats-row .gpa-val {
       color: #FBBF24;
       font-weight: 900;
       font-size: 13px;
+      font-family: 'Fira Code', monospace;
     }
 
-    /* 2. Genkit AI Assistant Banner Card */
-    .ai-banner-card {
+    /* 2. 24/7 Firebase Genkit AI Assistant Card */
+    .ai-assistant-card {
       background: var(--surface-card);
       border: 1.5px solid var(--primary-container);
-      border-radius: var(--radius-md);
-      padding: 14px;
+      border-radius: 20px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
       gap: 14px;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(27, 94, 75, 0.08);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .ai-banner-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
-    .ai-banner-card:active { transform: scale(0.98); }
+    .ai-assistant-card:active { transform: scale(0.97); }
 
-    .ai-avatar-icon {
+    .ai-avatar {
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--talib-bronze));
-      color: #fff;
+      background: linear-gradient(135deg, var(--talib-emerald), var(--talib-bronze));
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(27, 94, 75, 0.25);
+      box-shadow: 0 4px 12px rgba(27, 94, 75, 0.3);
     }
-    .ai-banner-text { flex: 1; }
-    .ai-banner-text h3 {
+    .ai-info { flex: 1; }
+    .ai-info-title {
       font-size: 14px;
-      font-weight: 800;
-      color: var(--text-main);
+      font-weight: 900;
+      color: var(--on-surface);
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .ai-banner-text p {
-      font-size: 11.5px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-      line-height: 1.4;
+    .ai-tag {
+      font-size: 9px;
+      font-weight: 800;
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 2px 6px;
+      border-radius: 6px;
     }
-    .ai-cta {
+    .ai-info-desc {
+      font-size: 11.5px;
+      color: var(--on-surface-variant);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+    .ai-btn-link {
       display: flex;
       align-items: center;
       gap: 4px;
@@ -436,11 +436,11 @@
       margin-top: 4px;
     }
 
-    /* 3. Offline Room DB Cache Status Card */
+    /* 3. Offline Room Database Cache Status Card */
     .offline-cache-card {
       background: var(--surface-card);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: 18px;
       padding: 12px 14px;
       display: flex;
       align-items: center;
@@ -448,114 +448,168 @@
       gap: 12px;
       box-shadow: var(--shadow-sm);
       cursor: pointer;
+      transition: all 0.2s;
     }
-    .offline-cache-card .info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .offline-icon {
-      width: 38px;
-      height: 38px;
+    .offline-cache-card:active { transform: scale(0.98); }
+    .offline-icon-box {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(16, 185, 129, 0.12);
+      background: rgba(16, 185, 129, 0.15);
       color: var(--green);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18px;
+      flex-shrink: 0;
     }
-    .offline-cache-card h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
+    .offline-text h4 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--on-surface);
     }
-    .offline-cache-card p {
+    .offline-text p {
       font-size: 11px;
-      color: var(--text-secondary);
+      color: var(--on-surface-variant);
+    }
+    .btn-text-vault {
+      background: transparent;
+      border: none;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
     }
 
-    /* 4. Action Grid (GridActionCard.kt Replica) */
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-    }
-    .section-title {
+    /* 4. GridActionCard (GridActionCard.kt Replica - 10 Android Gradient Floating Cards) */
+    .section-headline {
       font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
+      font-weight: 900;
+      color: var(--on-surface);
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-top: 4px;
     }
-    .section-title i { color: var(--primary); }
 
-    .grid-actions {
+    .grid-actions-10 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .grid-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 14px;
+    /* Floating Animated Action Card (Direct match to GridActionCard.kt) */
+    .action-card {
+      height: 78.dp;
+      height: 78px;
+      border-radius: 20px;
+      padding: 10px 14px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 112px;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
       position: relative;
       overflow: hidden;
-      transition: all 0.2s;
+      color: #FFFFFF;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+      animation: cardFloat 3s ease-in-out infinite alternate;
     }
-    .grid-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
-    .grid-card:active { transform: scale(0.97); }
+    .action-card:active { transform: scale(0.96) !important; }
 
-    .grid-card .icon-wrapper {
-      width: 38px;
-      height: 38px;
+    /* Alternating float delays */
+    .action-card:nth-child(1) { animation-delay: 0s; background: linear-gradient(135deg, #1B5E4B, #0F3D30); }
+    .action-card:nth-child(2) { animation-delay: 0.4s; background: linear-gradient(135deg, #C8956C, #9E6842); }
+    .action-card:nth-child(3) { animation-delay: 0.2s; background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+    .action-card:nth-child(4) { animation-delay: 0.6s; background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+    .action-card:nth-child(5) { animation-delay: 0.3s; background: linear-gradient(135deg, #EF4444, #B91C1C); }
+    .action-card:nth-child(6) { animation-delay: 0.7s; background: linear-gradient(135deg, #10B981, #047857); }
+    .action-card:nth-child(7) { animation-delay: 0.15s; background: linear-gradient(135deg, #06B6D4, #0891B2); }
+    .action-card:nth-child(8) { animation-delay: 0.55s; background: linear-gradient(135deg, #F59E0B, #B45309); }
+    .action-card:nth-child(9) { animation-delay: 0.25s; background: linear-gradient(135deg, #6366F1, #4338CA); }
+    .action-card:nth-child(10) { animation-delay: 0.65s; background: linear-gradient(135deg, #EC4899, #BE185D); }
+
+    @keyframes cardFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-4px); }
+    }
+
+    .action-icon-wrapper {
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
-      margin-bottom: 8px;
+      font-size: 18px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
-    .grid-card h4 {
+    .action-content { flex: 1; overflow: hidden; }
+    .action-title {
       font-size: 13px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 2px;
+      font-weight: 900;
+      color: #FFFFFF;
+      white-space: nowrap;
     }
-    .grid-card p {
-      font-size: 10.5px;
-      color: var(--text-secondary);
+    .action-badge {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.85);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-top: 1px;
     }
 
-    /* Color variants for grid cards */
-    .card-emerald .icon-wrapper { background: rgba(27, 94, 75, 0.12); color: var(--talib-emerald); }
-    .card-bronze .icon-wrapper { background: rgba(200, 149, 108, 0.18); color: var(--talib-bronze-dark); }
-    .card-purple .icon-wrapper { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
-    .card-blue .icon-wrapper { background: rgba(59, 130, 246, 0.12); color: var(--blue); }
-    .card-gold .icon-wrapper { background: rgba(245, 158, 11, 0.15); color: #D97706; }
-    .card-green .icon-wrapper { background: rgba(16, 185, 129, 0.12); color: var(--green); }
-    .card-crimson .icon-wrapper { background: rgba(239, 68, 68, 0.12); color: var(--crimson); }
-    .card-cyan .icon-wrapper { background: rgba(6, 182, 212, 0.12); color: #0891B2; }
+    /* 5. Schedule & Announcements preview rows */
+    .preview-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .preview-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .preview-details { flex: 1; }
+    .preview-details h4 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--on-surface);
+    }
+    .preview-details p {
+      font-size: 11px;
+      color: var(--on-surface-variant);
+    }
+    .badge-time {
+      background: rgba(27, 94, 75, 0.1);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+    }
 
     /* ==========================================================================
-       7. MODULES & COURSES SCREEN
+       7. COURSES SCREEN (CoursesScreen.kt Replica)
        ========================================================================== */
     .filter-tabs {
       display: flex;
@@ -566,28 +620,28 @@
     }
     .filter-tabs::-webkit-scrollbar { display: none; }
 
-    .filter-tab {
+    .pill-tab {
       padding: 6px 14px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background: var(--surface-card);
-      color: var(--text-secondary);
+      color: var(--on-surface-variant);
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.2s;
     }
-    .filter-tab.active {
+    .pill-tab.active {
       background: var(--primary);
-      color: #fff;
+      color: #FFFFFF;
       border-color: var(--primary);
     }
 
-    .module-card {
+    .module-item-card {
       background: var(--surface-card);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: 18px;
       padding: 16px;
       box-shadow: var(--shadow-sm);
       display: flex;
@@ -595,97 +649,79 @@
       gap: 10px;
       transition: all 0.2s;
     }
-    .module-card:hover {
+    .module-item-card:hover {
       border-color: var(--primary);
       box-shadow: var(--shadow-md);
     }
-    .module-header {
+    .module-card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
-    .module-title-box h3 {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
+    .module-card-top h3 {
+      font-size: 14.5px;
+      font-weight: 900;
+      color: var(--on-surface);
     }
-    .module-title-box span {
+    .module-card-top span {
       font-size: 11px;
-      color: var(--text-secondary);
-      font-weight: 600;
+      color: var(--on-surface-variant);
     }
-    .module-code-badge {
+    .badge-code {
       background: var(--primary-container);
       color: var(--primary);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       padding: 3px 8px;
       border-radius: 6px;
       font-family: 'Fira Code', monospace;
     }
-    .module-meta {
+    .module-meta-row {
       display: flex;
       gap: 12px;
       font-size: 11px;
-      color: var(--text-secondary);
+      color: var(--on-surface-variant);
       background: var(--surface-variant);
       padding: 6px 10px;
       border-radius: 8px;
     }
-    .module-actions {
+    .module-btns {
       display: flex;
       justify-content: flex-end;
       gap: 8px;
     }
-    .btn-sm {
+    .btn-action-sm {
       padding: 6px 12px;
       border-radius: 8px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s;
     }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-    }
-    .btn-outline:hover {
-      background: var(--surface-variant);
-      border-color: var(--primary);
-    }
+    .btn-primary { background: var(--primary); color: #FFFFFF; }
+    .btn-outlined { background: transparent; border: 1px solid var(--border-color); color: var(--on-surface); }
 
     /* ==========================================================================
-       8. LECTURES & PDF SCREEN
+       8. LECTURES SCREEN & PDF READER MODAL
        ========================================================================== */
-    .lecture-card {
+    .lecture-item-card {
       background: var(--surface-card);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: 16px;
       padding: 14px;
       display: flex;
-      gap: 12px;
       align-items: center;
+      gap: 12px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s;
     }
-    .lecture-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-md);
-    }
-    .lecture-pdf-icon {
+    .pdf-circle-icon {
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: rgba(239, 68, 68, 0.1);
+      background: rgba(239, 68, 68, 0.12);
       color: var(--crimson);
       display: flex;
       align-items: center;
@@ -693,126 +729,137 @@
       font-size: 20px;
       flex-shrink: 0;
     }
-    .lecture-details { flex: 1; }
-    .lecture-details h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--text-main);
+
+    /* Modal Reader Replica (PdfReaderModal.kt) */
+    .pdf-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
     }
-    .lecture-details .lecture-sub {
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-    .lecture-actions {
+    .pdf-modal-backdrop.active { display: flex; }
+
+    .pdf-modal-container {
+      width: 100%;
+      max-width: 440px;
+      max-height: 85vh;
+      background: var(--surface-color);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      overflow: hidden;
+    }
+    .pdf-modal-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pdf-modal-body {
+      padding: 18px;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--on-surface);
+    }
+    .pdf-modal-footer {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
     }
 
     /* ==========================================================================
-       9. ACADEMIC AI CHATBOT (Gemini / Genkit)
+       9. ACADEMIC AI CHATBOT (AcademicChatbotScreen.kt Replica)
        ========================================================================== */
-    .chat-container {
+    .chatbot-frame {
       display: flex;
       flex-direction: column;
       height: calc(100vh - 150px);
     }
-    .chat-messages {
+    .chatbot-messages-list {
       flex: 1;
       overflow-y: auto;
-      padding: 8px 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding-bottom: 8px;
     }
-    .chat-bubble {
-      max-width: 85%;
+    .chat-msg-row {
+      display: flex;
+      width: 100%;
+    }
+    .chat-msg-row.user { justify-content: flex-start; }
+    .chat-msg-row.bot { justify-content: flex-end; }
+
+    .msg-bubble {
+      max-width: 86%;
       padding: 12px 16px;
-      border-radius: 18px;
+      border-radius: 20px;
       font-size: 13px;
       line-height: 1.5;
       position: relative;
-      animation: messageIn 0.2s ease-out;
     }
-    @keyframes messageIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    .chat-bubble.student {
-      align-self: flex-start;
+    .msg-bubble.user {
       background: var(--primary);
       color: #FFFFFF;
       border-bottom-right-radius: 4px;
-      box-shadow: 0 2px 8px rgba(27, 94, 75, 0.2);
+      box-shadow: 0 4px 12px rgba(27, 94, 75, 0.2);
     }
-    .chat-bubble.ai {
-      align-self: flex-end;
+    .msg-bubble.bot {
       background: var(--surface-card);
-      color: var(--text-main);
+      color: var(--on-surface);
       border: 1px solid var(--border-color);
       border-bottom-left-radius: 4px;
       box-shadow: var(--shadow-sm);
     }
-    .chat-bubble.ai pre {
+    .msg-bubble.bot pre {
       background: rgba(0,0,0,0.06);
       padding: 8px;
       border-radius: 8px;
-      overflow-x: auto;
       font-family: 'Fira Code', monospace;
       font-size: 11.5px;
+      overflow-x: auto;
       margin: 6px 0;
     }
-    .chat-time {
+    .msg-time {
       font-size: 9.5px;
       opacity: 0.7;
       margin-top: 4px;
       text-align: left;
     }
-    .chat-quick-prompts {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 6px 0;
-      scrollbar-width: none;
-    }
-    .chat-quick-prompts::-webkit-scrollbar { display: none; }
-    .prompt-pill {
-      padding: 6px 12px;
-      border-radius: 14px;
-      background: var(--surface-variant);
-      border: 1px solid var(--border-color);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .prompt-pill:hover {
-      background: var(--primary-container);
-      color: var(--primary);
-    }
-    .chat-input-bar {
+    .chatbot-input-bar {
       display: flex;
       gap: 8px;
       padding-top: 8px;
       border-top: 1px solid var(--border-color);
     }
-    .chat-input {
+    .chat-text-input {
       flex: 1;
       padding: 10px 14px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background: var(--surface-card);
-      color: var(--text-main);
+      color: var(--on-surface);
       font-size: 13px;
       outline: none;
     }
-    .chat-input:focus { border-color: var(--primary); }
-    .btn-send {
+    .chat-text-input:focus { border-color: var(--primary); }
+    .btn-send-chat {
       width: 42px;
       height: 42px;
       border-radius: 50%;
       background: var(--primary);
-      color: #fff;
+      color: #FFFFFF;
       border: none;
       display: flex;
       align-items: center;
@@ -822,189 +869,20 @@
     }
 
     /* ==========================================================================
-       10. SCHEDULE / TIMETABLE SCREEN
+       10. BOTTOM NAVIGATION BAR (BottomNavBar.kt Replica)
        ========================================================================== */
-    .schedule-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .schedule-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      display: flex;
-      gap: 12px;
-      box-shadow: var(--shadow-sm);
-      border-right: 4px solid var(--primary);
-    }
-    .schedule-card.current-now {
-      border-right-color: var(--green);
-      background: var(--primary-container);
-    }
-    .schedule-time {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-left: 10px;
-      border-left: 1px dashed var(--border-color);
-      font-family: 'Fira Code', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      min-width: 75px;
-    }
-    .schedule-info { flex: 1; }
-    .schedule-info h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .schedule-tags {
-      display: flex;
-      gap: 6px;
-      margin-top: 4px;
-    }
-    .badge-tag {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .badge-lecture { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
-    .badge-td { background: rgba(16, 185, 129, 0.15); color: var(--green); }
-    .badge-tp { background: rgba(245, 158, 11, 0.15); color: #D97706; }
-
-    /* ==========================================================================
-       11. EXAMS SCREEN
-       ========================================================================== */
-    .exam-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .exam-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .exam-countdown {
-      background: rgba(239, 68, 68, 0.1);
-      color: var(--crimson);
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-
-    /* ==========================================================================
-       12. GRADES & GPA SCREEN
-       ========================================================================== */
-    .gpa-hero {
-      background: linear-gradient(135deg, var(--talib-emerald), #0F3D30);
-      color: #fff;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: center;
-      box-shadow: var(--shadow-md);
-    }
-    .gpa-number {
-      font-size: 38px;
-      font-weight: 900;
-      color: #FBBF24;
-      font-family: 'Fira Code', monospace;
-    }
-    .gpa-status {
-      font-size: 12px;
-      font-weight: 700;
-      opacity: 0.9;
-    }
-
-    /* ==========================================================================
-       13. PROFILE & DIGITAL STUDENT ID CARD
-       ========================================================================== */
-    .student-id-card {
-      background: linear-gradient(135deg, #1B5E4B 0%, #124033 100%);
-      color: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-      border: 2px solid rgba(200, 149, 108, 0.4);
-    }
-    .student-id-card::after {
-      content: 'REPUBLIQUE ALGERIENNE';
-      position: absolute;
-      bottom: -10px;
-      left: 10px;
-      font-size: 26px;
-      font-weight: 900;
-      opacity: 0.04;
-      letter-spacing: 4px;
-      pointer-events: none;
-    }
-    .id-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 10px;
-      margin-bottom: 14px;
-    }
-    .id-body {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-    .id-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      background: #FFFFFF;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 900;
-      border: 2px solid var(--talib-bronze);
-    }
-    .id-details h3 { font-size: 16px; font-weight: 900; }
-    .id-details p { font-size: 11px; opacity: 0.85; }
-    .id-barcode {
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(255,255,255,0.2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Fira Code', monospace;
-      font-size: 11px;
-    }
-
-    /* ==========================================================================
-       14. BOTTOM NAVIGATION BAR (BottomNavBar.kt Replica)
-       ========================================================================== */
-    .bottom-nav-bar {
+    .bottom-navbar-dock {
       position: fixed;
-      bottom: 10px;
+      bottom: 12px;
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 24px);
-      max-width: 496px;
+      max-width: 456px;
       height: 64px;
       background-color: var(--surface-color);
       border-radius: 24px;
       border: 1px solid var(--border-color);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -1012,844 +890,986 @@
       z-index: 100;
     }
 
-    .nav-tab-item {
+    .nav-tab-button {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 2px;
       flex: 1;
       height: 100%;
       background: transparent;
       border: none;
       cursor: pointer;
-      color: var(--text-secondary);
+      color: var(--on-surface-variant);
       transition: all 0.2s;
-      position: relative;
     }
-    .nav-tab-item.active {
+    .nav-tab-button.active {
       color: var(--primary);
     }
-    .nav-tab-item.active .nav-icon-container {
+    .nav-tab-button.active .nav-icon-box {
       background-color: var(--primary-container);
       color: var(--primary);
       border-radius: 16px;
       padding: 4px 16px;
     }
-    .nav-tab-item .nav-icon-container {
-      font-size: 17px;
+    .nav-icon-box {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .nav-tab-item .nav-label {
-      font-size: 10px;
+    .nav-title-label {
+      font-size: 10.5px;
       font-weight: 800;
     }
 
-    /* ==========================================================================
-       15. PDF READER MODAL (PdfReaderModal.kt Replica)
-       ========================================================================== */
-    .modal-overlay {
+    /* Toast Notification (Android Toast Replica) */
+    #android-toast {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      z-index: 200;
+      bottom: 86px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(27, 36, 32, 0.92);
+      backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 400;
       display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      animation: toastIn 0.25s ease-out;
     }
-    .modal-overlay.active { display: flex; }
-
-    .modal-box {
-      width: 100%;
-      max-width: 480px;
-      max-height: 90vh;
-      background: var(--surface-color);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .modal-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-body {
-      padding: 18px;
-      overflow-y: auto;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .modal-footer {
-      padding: 12px 18px;
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-    }
+    @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
   </style>
 </head>
 <body>
 
-  <div id="app-container">
+  <div id="android-frame">
     
-    <!-- Top App Bar (HeaderSection.kt Replica) -->
-    <header class="top-app-bar" id="main-header">
-      <div class="brand-info">
-        <button class="btn-back" id="btn-header-back" style="display: none;" onclick="navigateTo('HOME')">
+    <!-- Top Header Bar (HeaderSection.kt Replica) -->
+    <header class="top-header" id="app-header">
+      <div class="brand-box">
+        <button class="header-btn-back" id="btn-back-header" style="display: none;" onclick="navigateAppTo('HOME')">
           <i class="fa-solid fa-arrow-right"></i>
         </button>
         <div>
           <div class="brand-title">
             طالب | Talib
-            <span class="badge" id="header-badge">جامعي</span>
           </div>
-          <div class="brand-subtitle" id="header-subtitle">المدرسة العليا للأساتذة • قسنطينة</div>
+          <div class="brand-sub" id="header-subtitle-text">رفيقك الأكاديمي الشامل</div>
         </div>
       </div>
 
-      <div class="actions">
-        <!-- Refresh / Sync Button -->
-        <button class="icon-btn" id="btn-refresh" title="تحديث البيانات" onclick="triggerRefresh()">
+      <div class="header-actions">
+        <!-- Admin Exit button (only visible when in Admin screen) -->
+        <button class="btn-admin-exit" id="btn-admin-exit" style="display: none;" onclick="navigateAppTo('HOME')">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          خروج
+        </button>
+
+        <!-- Refresh / Sync Button with rotation animation -->
+        <button class="icon-button" id="btn-sync" title="تحديث ومزامنة المحتوى" onclick="syncAppContent()">
           <i class="fa-solid fa-rotate-right"></i>
         </button>
-        <!-- Theme Toggle -->
-        <button class="icon-btn" id="btn-theme-toggle" title="تغيير المظهر" onclick="toggleTheme()">
+
+        <!-- Theme Toggle (Moon / Sun) -->
+        <button class="icon-button" id="btn-theme" title="تبديل المظهر" onclick="toggleAppTheme()">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <!-- Admin Supervisor Panel -->
-        <button class="icon-btn" id="btn-admin" title="لوحة المشرف" onclick="navigateTo('ADMIN')">
+
+        <!-- Admin Supervisor Panel Button -->
+        <button class="icon-button" id="btn-admin-panel" title="لوحة تحكم الأستاذ والمشرف" onclick="navigateAppTo('ADMIN')">
           <i class="fa-solid fa-user-shield"></i>
         </button>
       </div>
     </header>
 
-    <!-- Global Loading Bar -->
+    <!-- Global Loading Bar Indicator -->
     <div id="global-loader">
       <i class="fa-solid fa-spinner fa-spin"></i>
-      <span id="loader-msg">جاري تحميل المحتوى الأكاديمي...</span>
+      <span id="loader-status-text">جاري مزامنة المحتوى الأكاديمي من السحابة...</span>
     </div>
 
-    <!-- Main Content Container -->
-    <main class="screen-content">
+    <!-- Main Screen Body Content -->
+    <main class="app-screen-body">
 
       <!-- ====================================================================
-           1. HOME SCREEN
+           1. HOME SCREEN (HomeScreen.kt)
            ==================================================================== -->
-      <div id="view-HOME" class="view-section active">
+      <section id="screen-HOME" class="screen-view active">
         
-        <!-- Hero Banner Card -->
-        <div class="hero-card">
-          <div class="hero-content">
+        <!-- 1. Hero Student Greeting Card -->
+        <div class="hero-banner">
+          <div class="hero-top-row">
             <div>
-              <div class="hero-greeting" id="hero-name">مرحباً، محمد بن صغير</div>
-              <div class="hero-sub" id="hero-sub">المدرسة العليا للأساتذة • اللغة والأدب العربي</div>
+              <div class="hero-name" id="hero-student-name">مرحباً، محمد بن صغير</div>
+              <div class="hero-subtrack" id="hero-student-track">المدرسة العليا للأساتذة • اللغة والأدب العربي</div>
             </div>
-            <div class="hero-group-badge" id="hero-group">الفوج 03</div>
+            <div class="hero-badge-group" id="hero-student-group">الفوج 03</div>
           </div>
 
-          <div class="hero-stats-bar">
-            <div class="gpa-box">
+          <div class="hero-stats-row">
+            <div class="gpa-label">
               <i class="fa-solid fa-chart-line" style="color: #FBBF24;"></i>
               <span>المعدل الفصلي التقديري:</span>
-              <span class="gpa-val" id="hero-gpa">15.65 / 20</span>
+              <span class="gpa-val" id="hero-gpa-val">15.65 / 20</span>
             </div>
-            <span style="font-size: 11px; font-weight: 700; opacity: 0.9;">6 مقاييس مسجلة</span>
+            <span style="font-size: 11px; font-weight: 800; opacity: 0.9;">6 مقاييس مسجلة</span>
           </div>
         </div>
 
-        <!-- 24/7 Academic AI Assistant Card -->
-        <div class="ai-banner-card" onclick="navigateTo('AI_CHAT')">
-          <div class="ai-avatar-icon">
+        <!-- 1.5. 24/7 Firebase Genkit AI Assistant Card -->
+        <div class="ai-assistant-card" onclick="navigateAppTo('AI_CHAT')">
+          <div class="ai-avatar">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
           </div>
-          <div class="ai-banner-text">
-            <h3>
+          <div class="ai-info">
+            <div class="ai-info-title">
               المساعد الأكاديمي الذكي 24/7
-              <span style="font-size: 9px; background: var(--primary); color: #fff; padding: 2px 6px; border-radius: 4px;">Genkit AI</span>
-            </h3>
-            <p>دعم أكاديمي فوري: شرح المحاضرات، حل تمارين TD، والتحضير للامتحانات.</p>
-            <div class="ai-cta">
+              <span class="ai-tag">Genkit AI</span>
+            </div>
+            <div class="ai-info-desc">
+              دعم أكاديمي مباشر: شرح المحاضرات، حل تمارين الأعمال الموجهة TD، والتحضير للامتحانات.
+            </div>
+            <div class="ai-btn-link">
               <span>اسأل المساعد الآن</span>
-              <i class="fa-solid fa-chevron-left"></i>
+              <i class="fa-solid fa-chevron-left" style="font-size: 10px;"></i>
             </div>
           </div>
         </div>
 
-        <!-- Offline Room DB Cache Status Card -->
-        <div class="offline-cache-card" onclick="navigateTo('OFFLINE_CACHE')">
-          <div class="info">
-            <div class="offline-icon">
+        <!-- 1.6. Offline Room Database Cache Status Card -->
+        <div class="offline-cache-card" onclick="navigateAppTo('OFFLINE_CACHE')">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="offline-icon-box">
               <i class="fa-solid fa-circle-check"></i>
             </div>
-            <div>
+            <div class="offline-text">
               <h4>المحتوى المخزن بدون إنترنت (Room DB)</h4>
-              <p><span id="cached-count">8</span> محاضرات وملخصات جاهزة للعرض دون شبكة.</p>
+              <p><span id="home-cached-num">8</span> محاضرات وملخصات جاهزة للعرض الفوري بدون شبكة.</p>
             </div>
           </div>
-          <button class="btn-sm btn-outline">فتح الخزنة</button>
+          <button class="btn-text-vault">فتح الذاكرة</button>
         </div>
 
-        <!-- Action Grid (8 Grid Action Cards) -->
-        <div class="section-header">
-          <div class="section-title">
-            <i class="fa-solid fa-shapes"></i>
-            الخدمات الأكاديمية
-          </div>
+        <!-- 2. The 10 Main Functional Grid Cards (Faithful to prototype) -->
+        <div class="section-headline">
+          <i class="fa-solid fa-shapes" style="color: var(--primary);"></i>
+          الخدمات والوحدات الأكاديمية
         </div>
 
-        <div class="grid-actions">
+        <div class="grid-actions-10">
           <!-- 1. المقررات -->
-          <div class="grid-card card-emerald" onclick="navigateTo('COURSES')">
-            <div class="icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
-            <h4>المقررات والمقاييس</h4>
-            <p>معاملات وأرصدة السداسي</p>
+          <div class="action-card" onclick="navigateAppTo('COURSES')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
+            <div class="action-content">
+              <div class="action-title">المقررات</div>
+              <div class="action-badge">6 مقاييس</div>
+            </div>
           </div>
 
           <!-- 2. المحاضرات -->
-          <div class="grid-card card-crimson" onclick="navigateTo('LECTURES')">
-            <div class="icon-wrapper"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>المحاضرات والملفات</h4>
-            <p>PDF وملخصات المقاييس</p>
+          <div class="action-card" onclick="navigateAppTo('LECTURES')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-file-pdf"></i></div>
+            <div class="action-content">
+              <div class="action-title">المحاضرات</div>
+              <div class="action-badge">ملفات PDF</div>
+            </div>
           </div>
 
-          <!-- 3. الجدول -->
-          <div class="grid-card card-purple" onclick="navigateTo('SCHEDULE')">
-            <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
-            <h4>الجدول الدراسي</h4>
-            <p>توقيت المدرجات والقاعات</p>
+          <!-- 3. الواجبات -->
+          <div class="action-card" onclick="navigateAppTo('ASSIGNMENTS')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
+            <div class="action-content">
+              <div class="action-title">الواجبات</div>
+              <div class="action-badge">مهام دراسية</div>
+            </div>
           </div>
 
-          <!-- 4. الامتحانات -->
-          <div class="grid-card card-gold" onclick="navigateTo('EXAMS')">
-            <div class="icon-wrapper"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h4>مواعيد الامتحانات</h4>
-            <p>العد التنازلي والقاعات</p>
+          <!-- 4. الجدول -->
+          <div class="action-card" onclick="navigateAppTo('SCHEDULE')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="action-content">
+              <div class="action-title">الجدول</div>
+              <div class="action-badge">التوقيت الأسبوعي</div>
+            </div>
           </div>
 
-          <!-- 5. الواجبات -->
-          <div class="grid-card card-blue" onclick="navigateTo('ASSIGNMENTS')">
-            <div class="icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
-            <h4>الواجبات والأعمال</h4>
-            <p>بحوث وتمارين الأعمال TD</p>
+          <!-- 5. الامتحانات -->
+          <div class="action-card" onclick="navigateAppTo('EXAMS')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-flask-vial"></i></div>
+            <div class="action-content">
+              <div class="action-title">الامتحانات</div>
+              <div class="action-badge">4 اختبارات</div>
+            </div>
           </div>
 
-          <!-- 6. النقاط والمعدل -->
-          <div class="grid-card card-green" onclick="navigateTo('GRADES')">
-            <div class="icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
-            <h4>كشف النقاط والمعدل</h4>
-            <p>حساب المعدل الفصلي LMD</p>
+          <!-- 6. العلامات -->
+          <div class="action-card" onclick="navigateAppTo('GRADES')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
+            <div class="action-content">
+              <div class="action-title">العلامات</div>
+              <div class="action-badge">حساب المعدل</div>
+            </div>
           </div>
 
-          <!-- 7. الفوج والزملاء -->
-          <div class="grid-card card-cyan" onclick="navigateTo('GROUP')">
-            <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
-            <h4>الفوج والزملاء</h4>
-            <p>مندوب الفوج والتواصل</p>
+          <!-- 7. الفوج -->
+          <div class="action-card" onclick="navigateAppTo('GROUP')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-users"></i></div>
+            <div class="action-content">
+              <div class="action-title">الفوج</div>
+              <div class="action-badge">الدفعة والأساتذة</div>
+            </div>
           </div>
 
           <!-- 8. الإعلانات -->
-          <div class="grid-card card-bronze" onclick="navigateTo('ANNOUNCEMENTS')">
-            <div class="icon-wrapper"><i class="fa-solid fa-bullhorn"></i></div>
-            <h4>الإعلانات والتنبيهات</h4>
-            <p>مستجدات إدارة الكلية</p>
+          <div class="action-card" onclick="navigateAppTo('ANNOUNCEMENTS')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-bullhorn"></i></div>
+            <div class="action-content">
+              <div class="action-title">الإعلانات</div>
+              <div class="action-badge">3 تنبيهات</div>
+            </div>
+          </div>
+
+          <!-- 9. ملفاتي وملاحظاتي -->
+          <div class="action-card" onclick="navigateAppTo('MY_FILES')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-folder-open"></i></div>
+            <div class="action-content">
+              <div class="action-title">ملفاتي وملاحظاتي</div>
+              <div class="action-badge">محفوظاتي وملاحظاتي</div>
+            </div>
+          </div>
+
+          <!-- 10. المساعد الذكي -->
+          <div class="action-card" onclick="navigateAppTo('AI_CHAT')">
+            <div class="action-icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="action-content">
+              <div class="action-title">المساعد الذكي</div>
+              <div class="action-badge">Genkit AI 24/7</div>
+            </div>
           </div>
         </div>
 
-        <!-- Today's Schedule Preview -->
-        <div class="section-header">
-          <div class="section-title">
-            <i class="fa-solid fa-clock"></i>
-            حصة اليوم القادمة
+        <!-- 3. Upcoming Schedule Section -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+          <div class="section-headline">
+            <i class="fa-solid fa-clock" style="color: var(--primary);"></i>
+            برنامج الحصص القادمة
           </div>
-          <button class="btn-sm btn-outline" onclick="navigateTo('SCHEDULE')">عرض الكل</button>
+          <button class="btn-text-vault" onclick="navigateAppTo('SCHEDULE')">عرض الجدول كاملاً</button>
         </div>
 
-        <div class="schedule-card current-now">
-          <div class="schedule-time">
-            <span>10:30</span>
-            <span>12:00</span>
-          </div>
-          <div class="schedule-info">
+        <div class="preview-card">
+          <div class="preview-icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="preview-details">
             <h4>النحو والصرف (محاضرة)</h4>
-            <p style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">د. أحمد عبد الرحمن • المدرج A</p>
-            <div class="schedule-tags">
-              <span class="badge-tag badge-lecture">محاضرة رسمية</span>
-              <span class="badge-tag" style="background: var(--green); color: #fff;">جارية الآن</span>
-            </div>
+            <p>محاضرة رسمية • المدرج A • د. أحمد عبد الرحمن</p>
+          </div>
+          <div class="badge-time">10:30</div>
+        </div>
+
+        <!-- 4. Announcements Preview -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+          <div class="section-headline">
+            <i class="fa-solid fa-bell" style="color: var(--primary);"></i>
+            آخر التنبيهات الرسمية
+          </div>
+          <button class="btn-text-vault" onclick="navigateAppTo('ANNOUNCEMENTS')">عرض الكل</button>
+        </div>
+
+        <div class="preview-card" style="border-right: 4px solid var(--crimson);">
+          <div class="preview-details">
+            <h4 style="color: var(--crimson);">تحديد موعد امتحان النحو العربي الاستدراكي</h4>
+            <p>إدارة قسم اللغة العربية • قبل ساعتين</p>
           </div>
         </div>
 
-      </div>
+      </section>
 
       <!-- ====================================================================
-           2. COURSES SCREEN
+           2. COURSES SCREEN (CoursesScreen.kt)
            ==================================================================== -->
-      <div id="view-COURSES" class="view-section">
+      <section id="screen-COURSES" class="screen-view">
         <div class="filter-tabs">
-          <button class="filter-tab active" onclick="filterCourses('ALL', this)">جميع السداسيات</button>
-          <button class="filter-tab" onclick="filterCourses('S1', this)">السداسي الأول (S1)</button>
-          <button class="filter-tab" onclick="filterCourses('S2', this)">السداسي الثاني (S2)</button>
+          <button class="pill-tab active" onclick="renderCoursesTab('ALL', this)">جميع المقاييس (6)</button>
+          <button class="pill-tab" onclick="renderCoursesTab('S1', this)">السداسي الأول (S1)</button>
+          <button class="pill-tab" onclick="renderCoursesTab('S2', this)">السداسي الثاني (S2)</button>
         </div>
 
-        <div id="courses-list" style="display: flex; flex-direction: column; gap: 12px;">
-          <!-- Loaded dynamically -->
-        </div>
-      </div>
+        <div id="courses-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           3. LECTURES SCREEN
+           3. LECTURES SCREEN (LecturesScreen.kt)
            ==================================================================== -->
-      <div id="view-LECTURES" class="view-section">
-        <div class="filter-tabs" id="lecture-modules-filter">
-          <button class="filter-tab active" onclick="filterLectures('ALL', this)">الكل</button>
-          <button class="filter-tab" onclick="filterLectures('نحو', this)">النحو والصرف</button>
-          <button class="filter-tab" onclick="filterLectures('أدب', this)">الأدب الجاهلي</button>
-          <button class="filter-tab" onclick="filterLectures('لسانيات', this)">اللسانيات العامة</button>
+      <section id="screen-LECTURES" class="screen-view">
+        <div class="filter-tabs" id="lecture-tabs-row">
+          <button class="pill-tab active" onclick="renderLecturesTab('ALL', this)">الكل</button>
+          <button class="pill-tab" onclick="renderLecturesTab('نحو', this)">النحو والصرف</button>
+          <button class="pill-tab" onclick="renderLecturesTab('أدب', this)">الأدب الجاهلي</button>
+          <button class="pill-tab" onclick="renderLecturesTab('لسانيات', this)">اللسانيات العامة</button>
         </div>
 
-        <div id="lectures-list" style="display: flex; flex-direction: column; gap: 12px;">
-          <!-- Loaded dynamically -->
-        </div>
-      </div>
+        <div id="lectures-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           4. ACADEMIC AI CHATBOT SCREEN
+           4. ACADEMIC AI CHATBOT (AcademicChatbotScreen.kt)
            ==================================================================== -->
-      <div id="view-AI_CHAT" class="view-section">
-        <div class="chat-container">
-          <div class="chat-messages" id="chat-box">
-            <div class="chat-bubble ai">
-              <strong>المساعد الأكاديمي (Gemini AI):</strong><br>
-              مرحباً بك يا طالب العلم! أنا رفيقك الأكاديمي الذكي. يمكنك سؤالي عن شروحات الدروس، إعراب الجمل، توثيق المراجع، أو حل مسائل TD. كيف أساعدك اليوم؟
-              <div class="chat-time">الآن</div>
+      <section id="screen-AI_CHAT" class="screen-view">
+        <div class="chatbot-frame">
+          <div class="chatbot-messages-list" id="chatbot-box">
+            <div class="chat-msg-row bot">
+              <div class="msg-bubble bot">
+                <strong>المساعد الأكاديمي (Gemini AI):</strong><br>
+                مرحباً بك يا طالب العلم! أنا رفيقك الأكاديمي الذكي المخصص لطلبة المدرسة العليا للأساتذة. يمكنك سؤالي عن شروحات الدروس، إعراب الجمل، المراجع الأكاديمية، أو حل تمارين TD.
+                <div class="msg-time">الآن</div>
+              </div>
             </div>
           </div>
 
-          <div class="chat-quick-prompts">
-            <div class="prompt-pill" onclick="sendPrompt('اشرح لي درس المبتدأ والخبر باختصار وأمثلة إعرابية')">📚 شرح المبتدأ والخبر</div>
-            <div class="prompt-pill" onclick="sendPrompt('كيف يتم حساب معدل مقياس في نظام LMD مع نقطة TD والامتحان؟')">📊 حساب معدل المقياس</div>
-            <div class="prompt-pill" onclick="sendPrompt('أعطني نصائح عملية لتنظيم وقت المراجعة للامتحانات الجامعية')">🎯 نصائح المراجعة</div>
+          <div class="filter-tabs" style="padding: 6px 0;">
+            <button class="pill-tab" onclick="sendChatPrompt('اشرح لي درس المبتدأ والخبر وأنواعه بالتفصيل مع أمثلة إعرابية')">📚 شرح المبتدأ والخبر</button>
+            <button class="pill-tab" onclick="sendChatPrompt('كيف أحسب معدلي الفصلي في نظام LMD مع نقطة TD والامتحان والمعاملات؟')">📊 حساب معدل LMD</button>
+            <button class="pill-tab" onclick="sendChatPrompt('أعطني خطة عملية لتنظيم وقت المراجعة للامتحانات الجامعية')">🎯 نصائح المراجعة</button>
           </div>
 
-          <div class="chat-input-bar">
-            <input type="text" class="chat-input" id="chat-input-field" placeholder="اكتب سؤالك الأكاديمي هنا..." onkeydown="if(event.key==='Enter') sendChatMessage()">
-            <button class="btn-send" onclick="sendChatMessage()">
+          <div class="chatbot-input-bar">
+            <input type="text" class="chat-text-input" id="chat-input" placeholder="اكتب سؤالك الأكاديمي هنا..." onkeydown="if(event.key==='Enter') executeSendChat()">
+            <button class="btn-send-chat" onclick="executeSendChat()">
               <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- ====================================================================
-           5. SCHEDULE SCREEN
+           5. SCHEDULE SCREEN (ScheduleScreen.kt)
            ==================================================================== -->
-      <div id="view-SCHEDULE" class="view-section">
+      <section id="screen-SCHEDULE" class="screen-view">
         <div class="filter-tabs">
-          <button class="filter-tab active" onclick="filterSchedule('SUN', this)">الأحد</button>
-          <button class="filter-tab" onclick="filterSchedule('MON', this)">الإثنين</button>
-          <button class="filter-tab" onclick="filterSchedule('TUE', this)">الثلاثاء</button>
-          <button class="filter-tab" onclick="filterSchedule('WED', this)">الأربعاء</button>
-          <button class="filter-tab" onclick="filterSchedule('THU', this)">الخميس</button>
+          <button class="pill-tab active" onclick="renderScheduleDay('SUN', this)">الأحد</button>
+          <button class="pill-tab" onclick="renderScheduleDay('MON', this)">الإثنين</button>
+          <button class="pill-tab" onclick="renderScheduleDay('TUE', this)">الثلاثاء</button>
+          <button class="pill-tab" onclick="renderScheduleDay('WED', this)">الأربعاء</button>
+          <button class="pill-tab" onclick="renderScheduleDay('THU', this)">الخميس</button>
         </div>
 
-        <div class="schedule-timeline" id="schedule-list">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+        <div id="schedule-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           6. EXAMS SCREEN
+           6. EXAMS SCREEN (ExamsScreen.kt)
            ==================================================================== -->
-      <div id="view-EXAMS" class="view-section">
-        <div class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> جدول الامتحانات الرسمية</div>
-        <div id="exams-list" style="display: flex; flex-direction: column; gap: 12px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+      <section id="screen-EXAMS" class="screen-view">
+        <div class="section-headline"><i class="fa-solid fa-flask-vial" style="color: var(--crimson);"></i> برنامج الامتحانات الرسمية والتقييمات</div>
+        <div id="exams-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           7. ASSIGNMENTS SCREEN
+           7. ASSIGNMENTS SCREEN (AssignmentsScreen.kt)
            ==================================================================== -->
-      <div id="view-ASSIGNMENTS" class="view-section">
-        <div class="section-title"><i class="fa-solid fa-list-check"></i> قائمة الواجبات والأعمال الموجهة</div>
-        <div id="assignments-list" style="display: flex; flex-direction: column; gap: 12px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+      <section id="screen-ASSIGNMENTS" class="screen-view">
+        <div class="section-headline"><i class="fa-solid fa-list-check" style="color: var(--blue);"></i> الواجبات والأعمال الموجهة TD</div>
+        <div id="assignments-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           8. GRADES & GPA SCREEN
+           8. GRADES & GPA SCREEN (GradesScreen.kt)
            ==================================================================== -->
-      <div id="view-GRADES" class="view-section">
-        <div class="gpa-hero">
+      <section id="screen-GRADES" class="screen-view">
+        <div class="hero-banner" style="height: auto; text-align: center; padding: 22px;">
           <div style="font-size: 13px; opacity: 0.9;">المعدل الفصلي التقديري (LMD)</div>
-          <div class="gpa-number" id="grades-gpa-val">15.65</div>
-          <div class="gpa-status">التقدير العام: <strong style="color: #FBBF24;">جيد جداً (Mention Très Bien)</strong></div>
+          <div style="font-size: 40px; font-weight: 900; color: #FBBF24; font-family: 'Fira Code', monospace; margin: 4px 0;" id="grades-screen-gpa">15.65</div>
+          <div style="font-size: 12.5px; font-weight: 700;">التقدير العام: <strong style="color: #FBBF24;">جيد جداً (Mention Très Bien)</strong></div>
         </div>
 
-        <div class="section-title" style="margin-top: 10px;"><i class="fa-solid fa-table-cells"></i> تفاصيل علامات المقاييس</div>
-        <div id="grades-list" style="display: flex; flex-direction: column; gap: 10px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+        <div class="section-headline" style="margin-top: 8px;"><i class="fa-solid fa-table-cells" style="color: var(--primary);"></i> تفاصيل نقاط المقاييس</div>
+        <div id="grades-items-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+      </section>
 
       <!-- ====================================================================
-           9. COHORT / GROUP SCREEN
+           9. COHORT / GROUP SCREEN (GroupScreen.kt)
            ==================================================================== -->
-      <div id="view-GROUP" class="view-section">
-        <div class="module-card">
-          <div class="section-title"><i class="fa-solid fa-user-tie"></i> مندوب الفوج (Délégué)</div>
-          <p style="font-size: 13px; font-weight: 700;">أنس بن سالم (مندوب الدفعة)</p>
-          <p style="font-size: 11px; color: var(--text-secondary);">لأي استفسارات بخصوص تغيير التوقيت أو التنسيق مع الأساتذة.</p>
-          <div style="display: flex; gap: 8px; margin-top: 6px;">
-            <a href="https://wa.me/" class="btn-sm btn-primary" style="text-decoration: none;"><i class="fa-brands fa-whatsapp"></i> واتساب الفوج</a>
-            <button class="btn-sm btn-outline"><i class="fa-solid fa-phone"></i> اتصال</button>
+      <section id="screen-GROUP" class="screen-view">
+        <div class="module-item-card">
+          <div class="section-headline"><i class="fa-solid fa-user-tie" style="color: var(--primary);"></i> مندوب الفوج (Délégué)</div>
+          <p style="font-size: 13.5px; font-weight: 800; color: var(--on-surface);">أنس بن سالم (مندوب الدفعة الرسمية)</p>
+          <p style="font-size: 11.5px; color: var(--on-surface-variant);">المسؤول عن التنسيق مع إدارة القسم وتأكيد جداول الامتحانات والحصص التعويضية.</p>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <a href="https://wa.me/" class="btn-action-sm btn-primary" style="text-decoration: none;"><i class="fa-brands fa-whatsapp"></i> واتساب الفوج</a>
+            <button class="btn-action-sm btn-outlined" onclick="showToast('تم نسخ رقم المندوب')"><i class="fa-solid fa-phone"></i> 0661234567</button>
           </div>
         </div>
 
-        <div class="section-title" style="margin-top: 8px;"><i class="fa-solid fa-users"></i> قائمة طلبة الفوج 03</div>
-        <div id="peers-list" style="display: flex; flex-direction: column; gap: 8px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+        <div class="section-headline" style="margin-top: 6px;"><i class="fa-solid fa-users" style="color: var(--primary);"></i> زملاء الفوج 03 (32 طالباً)</div>
+        <div id="group-peers-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
+      </section>
 
       <!-- ====================================================================
-           10. ANNOUNCEMENTS SCREEN
+           10. ANNOUNCEMENTS SCREEN (AnnouncementsScreen.kt)
            ==================================================================== -->
-      <div id="view-ANNOUNCEMENTS" class="view-section">
-        <div class="section-title"><i class="fa-solid fa-bullhorn"></i> إعلانات وتنبيهات الإدارة</div>
-        <div id="announcements-list" style="display: flex; flex-direction: column; gap: 12px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+      <section id="screen-ANNOUNCEMENTS" class="screen-view">
+        <div class="section-headline"><i class="fa-solid fa-bullhorn" style="color: var(--primary);"></i> إعلانات وتنبيهات الكلية</div>
+        <div id="announcements-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
 
       <!-- ====================================================================
-           11. OFFLINE VAULT SCREEN
+           11. OFFLINE VAULT SCREEN (OfflineVaultScreen.kt)
            ==================================================================== -->
-      <div id="view-OFFLINE_CACHE" class="view-section">
+      <section id="screen-OFFLINE_CACHE" class="screen-view">
         <div class="offline-cache-card" style="border-color: var(--green);">
-          <div class="info">
-            <div class="offline-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="offline-icon-box" style="background: rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="offline-text">
               <h4>الخزنة الأكاديمية أوفلاين (Room DB)</h4>
-              <p>الملفات المخزنة في ذاكرة جهازك لتعمل دون إنترنت إطلاقاً.</p>
+              <p>الملفات المخزنة في ذاكرة المتصفح لتعمل في أي وقت دون اتصال بالإنترنت.</p>
             </div>
           </div>
         </div>
-        <div id="offline-vault-list" style="display: flex; flex-direction: column; gap: 10px;">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
+
+        <div id="offline-vault-items-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+      </section>
 
       <!-- ====================================================================
-           12. PROFILE & DIGITAL ID SCREEN
+           12. MY FILES & NOTES SCREEN (MyFilesScreen.kt)
            ==================================================================== -->
-      <div id="view-PROFILE" class="view-section">
-        
-        <!-- Official Algerian Digital Student Card -->
-        <div class="student-id-card">
-          <div class="id-header">
+      <section id="screen-MY_FILES" class="screen-view">
+        <div class="filter-tabs">
+          <button class="pill-tab active" onclick="renderMyFilesTab(0, this)">المحفوظات (<span id="bookmarked-count">3</span>)</button>
+          <button class="pill-tab" onclick="renderMyFilesTab(1, this)">المخزن أوفلاين (<span id="offline-count">8</span>)</button>
+          <button class="pill-tab" onclick="renderMyFilesTab(2, this)">ملاحظاتي (<span id="notes-count">4</span>)</button>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
+          <button class="btn-action-sm btn-primary" onclick="openAddNotePrompt()"><i class="fa-solid fa-plus"></i> ملاحظة جديدة</button>
+        </div>
+
+        <div id="myfiles-items-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      </section>
+
+      <!-- ====================================================================
+           13. PROFILE & DIGITAL ID CARD (ProfileScreen.kt)
+           ==================================================================== -->
+      <section id="screen-PROFILE" class="screen-view">
+        <!-- Official Algerian Student Digital Card -->
+        <div class="hero-banner" style="height: auto; border: 2px solid var(--talib-bronze); padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
             <div>
-              <div style="font-size: 10px; font-weight: 800; opacity: 0.85;">الجمهورية الجزائرية الديمقراطية الشعبية</div>
-              <div style="font-size: 11px; font-weight: 900;">المدرسة العليا للأساتذة - قسنطينة</div>
+              <div style="font-size: 11px; opacity: 0.9;">الجمهورية الجزائرية الديمقراطية الشعبية</div>
+              <div style="font-size: 12px; font-weight: 800;">المدرسة العليا للأساتذة - قسنطينة</div>
             </div>
-            <i class="fa-solid fa-graduation-cap" style="font-size: 24px; color: var(--talib-bronze);"></i>
+            <i class="fa-solid fa-id-card" style="font-size: 24px; color: var(--talib-bronze);"></i>
           </div>
 
-          <div class="id-body">
-            <div class="id-avatar">م</div>
-            <div class="id-details">
-              <h3>محمد بن صغير</h3>
-              <p>طالب أستاذ في التعليم الثانوي</p>
-              <p>التخصص: اللغة والأدب العربي</p>
-              <p>الفوج: 03 • السنة الثالثة (LMD)</p>
+          <div style="display: flex; gap: 14px; align-items: center; margin-top: 14px;">
+            <div style="width: 64px; height: 64px; border-radius: 14px; background: #FFFFFF; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; border: 2px solid var(--talib-bronze);">
+              م.ب
+            </div>
+            <div>
+              <div style="font-size: 16px; font-weight: 900;">محمد بن صغير</div>
+              <div style="font-size: 11.5px; opacity: 0.85;">التخصص: اللغة والأدب العربي (أستاذ تعليم ثانوي)</div>
+              <div style="font-size: 11.5px; opacity: 0.85;">رقم التسجيل: 212135048992</div>
             </div>
           </div>
 
-          <div class="id-barcode">
-            <span>N° ETUDIANT: 2023-ENS-8842</span>
-            <span>2025 / 2026</span>
+          <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.25); display: flex; justify-content: space-between; align-items: center; font-family: 'Fira Code', monospace; font-size: 11px;">
+            <span>السنة الجامعية: 2025 / 2026</span>
+            <span>بطاقة سارية المفعول</span>
           </div>
         </div>
 
-        <!-- Settings & Customization -->
-        <div class="module-card">
-          <div class="section-title"><i class="fa-solid fa-palette"></i> تخصيص المظهر والألوان</div>
-          <div style="display: flex; gap: 10px; margin-top: 6px;">
-            <button class="btn-sm btn-primary" onclick="setPalette('EMERALD')">
-              <i class="fa-solid fa-leaf"></i> الأخضر الزمردي
-            </button>
-            <button class="btn-sm btn-outline" onclick="setPalette('VIOLET')">
-              <i class="fa-solid fa-wand-magic-sparkles"></i> البنفسجي العصري
-            </button>
+        <div class="section-headline" style="margin-top: 8px;"><i class="fa-solid fa-gear" style="color: var(--primary);"></i> إعدادات المنصة والحساب</div>
+        <div class="module-item-card" style="gap: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: 700;">الوضع الليلي (Dark Mode)</span>
+            <button class="btn-action-sm btn-outlined" onclick="toggleAppTheme()">تبديل</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: 700;">مسح الذاكرة المؤقتة (Cache)</span>
+            <button class="btn-action-sm btn-outlined" onclick="clearOfflineCache()">تنظيف</button>
           </div>
         </div>
-
-      </div>
+      </section>
 
       <!-- ====================================================================
-           13. ADMIN SUPERVISOR PANEL
+           14. ADMIN PANEL SCREEN (AdminPanelScreen.kt)
            ==================================================================== -->
-      <div id="view-ADMIN" class="view-section">
-        <div class="module-card">
-          <div class="section-title"><i class="fa-solid fa-plus"></i> إضافة محاضرة أو ملف PDF جديد</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-            <input type="text" id="admin-lec-title" class="chat-input" placeholder="عنوان المحاضرة (مثال: المحاضرة 05: بحور الشعر)">
-            <input type="text" id="admin-lec-module" class="chat-input" placeholder="اسم المقياس (مثال: العروض وموسيقى الشعر)">
-            <input type="text" id="admin-lec-url" class="chat-input" placeholder="رابط الملف PDF (أو اتركه للاختبار)">
-            <button class="btn-sm btn-primary" onclick="adminAddLecture()"><i class="fa-solid fa-upload"></i> نشر المحاضرة للطلبة</button>
+      <section id="screen-ADMIN" class="screen-view">
+        <div class="hero-banner" style="background: linear-gradient(135deg, #1E293B, #0F172A);">
+          <div class="hero-top-row">
+            <div>
+              <div class="hero-name">لوحة تحكم الأستاذ والمشرف</div>
+              <div class="hero-subtrack">إدارة الدروس، نشر الإعلانات ومتابعة الفوج</div>
+            </div>
+            <div class="hero-badge-group" style="background: var(--gold);">مشرف معتمد</div>
           </div>
         </div>
 
-        <div class="module-card">
-          <div class="section-title"><i class="fa-solid fa-bullhorn"></i> بث إعلان عاجل للدفعة</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-            <input type="text" id="admin-ann-title" class="chat-input" placeholder="عنوان الإعلان">
-            <textarea id="admin-ann-body" class="chat-input" rows="3" placeholder="تفاصيل الإعلان للطلبة..."></textarea>
-            <button class="btn-sm btn-primary" onclick="adminAddAnnouncement()"><i class="fa-solid fa-paper-plane"></i> بث الإعلان فوراً</button>
-          </div>
+        <div class="module-item-card">
+          <div class="section-headline"><i class="fa-solid fa-file-arrow-up" style="color: var(--primary);"></i> رفع محاضرة أو ملخص جديد</div>
+          <input type="text" id="admin-lec-title" class="chat-text-input" placeholder="عنوان المحاضرة (مثال: المحاضرة 07: إعراب الجمل)">
+          <select id="admin-lec-module" class="chat-text-input">
+            <option value="النحو والصرف">النحو والصرف</option>
+            <option value="الأدب الجاهلي">الأدب الجاهلي</option>
+            <option value="اللسانيات العامة">اللسانيات العامة</option>
+            <option value="علم العروض والقافية">علم العروض والقافية</option>
+          </select>
+          <textarea id="admin-lec-content" class="chat-text-input" style="height: 70px; resize: none;" placeholder="محتوى المحاضرة أو ملخص الدرس..."></textarea>
+          <button class="btn-action-sm btn-primary" onclick="adminPublishLecture()"><i class="fa-solid fa-cloud-arrow-up"></i> نشر المحاضرة للطلبة</button>
         </div>
-      </div>
+
+        <div class="module-item-card">
+          <div class="section-headline"><i class="fa-solid fa-bullhorn" style="color: var(--crimson);"></i> بث إعلان عاجل للفوج</div>
+          <input type="text" id="admin-ann-title" class="chat-text-input" placeholder="عنوان الإعلان">
+          <textarea id="admin-ann-body" class="chat-text-input" style="height: 60px; resize: none;" placeholder="نص الإعلان أو التنبيه..."></textarea>
+          <button class="btn-action-sm btn-primary" style="background: var(--crimson);" onclick="adminPublishAnnouncement()"><i class="fa-solid fa-paper-plane"></i> بث الإعلان فوراً</button>
+        </div>
+      </section>
 
     </main>
 
-    <!-- Bottom Navigation Bar (BottomNavBar.kt Replica) -->
-    <nav class="bottom-nav-bar" id="main-bottom-nav">
-      <button class="nav-tab-item active" id="nav-btn-HOME" onclick="navigateTo('HOME')">
-        <div class="nav-icon-container"><i class="fa-solid fa-house"></i></div>
-        <span class="nav-label">الرئيسية</span>
+    <!-- ======================================================================
+         15. BOTTOM NAVIGATION BAR (TalibBottomNavBar.kt Replica)
+         ====================================================================== -->
+    <nav class="bottom-navbar-dock" id="main-bottom-navbar">
+      <!-- 1. الرئيسية -->
+      <button class="nav-tab-button active" id="tab-btn-HOME" onclick="navigateAppTo('HOME')">
+        <div class="nav-icon-box"><i class="fa-solid fa-house"></i></div>
+        <div class="nav-title-label">الرئيسية</div>
       </button>
 
-      <button class="nav-tab-item" id="nav-btn-COURSES" onclick="navigateTo('COURSES')">
-        <div class="nav-icon-container"><i class="fa-solid fa-book-open"></i></div>
-        <span class="nav-label">المقررات</span>
+      <!-- 2. المقررات -->
+      <button class="nav-tab-button" id="tab-btn-COURSES" onclick="navigateAppTo('COURSES')">
+        <div class="nav-icon-box"><i class="fa-solid fa-book-open"></i></div>
+        <div class="nav-title-label">المقررات</div>
       </button>
 
-      <button class="nav-tab-item" id="nav-btn-SCHEDULE" onclick="navigateTo('SCHEDULE')">
-        <div class="nav-icon-container"><i class="fa-solid fa-calendar-days"></i></div>
-        <span class="nav-label">الجدول</span>
+      <!-- 3. الجدول -->
+      <button class="nav-tab-button" id="tab-btn-SCHEDULE" onclick="navigateAppTo('SCHEDULE')">
+        <div class="nav-icon-box"><i class="fa-solid fa-calendar-days"></i></div>
+        <div class="nav-title-label">الجدول</div>
       </button>
 
-      <button class="nav-tab-item" id="nav-btn-PROFILE" onclick="navigateTo('PROFILE')">
-        <div class="nav-icon-container"><i class="fa-solid fa-user"></i></div>
-        <span class="nav-label">حسابي</span>
+      <!-- 4. حسابي -->
+      <button class="nav-tab-button" id="tab-btn-PROFILE" onclick="navigateAppTo('PROFILE')">
+        <div class="nav-icon-box"><i class="fa-solid fa-user"></i></div>
+        <div class="nav-title-label">حسابي</div>
       </button>
     </nav>
 
-  </div>
-
-  <!-- PDF Reader Modal (PdfReaderModal.kt Replica) -->
-  <div class="modal-overlay" id="pdf-modal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <i class="fa-solid fa-file-pdf" style="color: var(--crimson); font-size: 18px;"></i>
-          <h3 style="font-size: 14px; font-weight: 800;" id="pdf-modal-title">المحاضرة</h3>
+    <!-- PDF Viewer Modal -->
+    <div class="pdf-modal-backdrop" id="pdf-modal">
+      <div class="pdf-modal-container">
+        <div class="pdf-modal-header">
+          <div style="font-weight: 800; font-size: 14px; color: var(--on-surface);" id="modal-doc-title">المحاضرة</div>
+          <button class="header-btn-back" style="width: 32px; height: 32px;" onclick="closePdfModal()"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <button class="icon-btn" onclick="closePdfModal()"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="modal-body" id="pdf-modal-body">
-        <p style="color: var(--text-secondary); margin-bottom: 12px;" id="pdf-modal-info"></p>
-        <div style="background: var(--surface-variant); padding: 14px; border-radius: 12px; border: 1px solid var(--border-color);" id="pdf-modal-content">
-          <!-- Text preview -->
+        <div class="pdf-modal-body" id="modal-doc-body"></div>
+        <div class="pdf-modal-footer">
+          <button class="btn-action-sm btn-outlined" onclick="saveActiveLectureOffline()"><i class="fa-solid fa-download"></i> حفظ أوفلاين</button>
+          <button class="btn-action-sm btn-primary" onclick="closePdfModal()">إغلاق</button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-sm btn-outline" id="pdf-btn-save-offline" onclick="saveActiveLectureOffline()">
-          <i class="fa-solid fa-cloud-arrow-down"></i> حفظ أوفلاين
-        </button>
-        <button class="btn-sm btn-primary" onclick="closePdfModal()">إغلاق</button>
       </div>
     </div>
+
+    <!-- Android Toast Notification Bubble -->
+    <div id="android-toast"></div>
+
   </div>
 
-  <!-- ==========================================================================
-       JAVASCRIPT APPLICATION LOGIC & STATE ENGINE (Mirroring TalibViewModel)
-       ========================================================================== -->
+  <!-- ========================================================================
+       16. COMPLETE CORE DATA & LOGIC ENGINE (TalibViewModel.kt JavaScript Replica)
+       ======================================================================== -->
   <script>
-    // 1. Initial State Data (Mirroring Room Database Entities)
-    const state = {
-      currentRoute: 'HOME',
-      isDarkMode: false,
-      themePalette: 'EMERALD',
-      modules: [
-        { id: 1, name: 'النحو والصرف المعمق', code: 'ARB-301', semester: 'S1', prof: 'د. أحمد عبد الرحمن', coeff: 4, credits: 6, lecturesCount: 8 },
-        { id: 2, name: 'الأدب العربي القديم ونقده', code: 'ARB-302', semester: 'S1', prof: 'أ.د. فاطمة الزهراء', coeff: 3, credits: 5, lecturesCount: 6 },
-        { id: 3, name: 'اللسانيات والمدارس اللغوية', code: 'ARB-303', semester: 'S1', prof: 'د. كريم بوعلام', coeff: 3, credits: 5, lecturesCount: 7 },
-        { id: 4, name: 'العروض وموسيقى الشعر', code: 'ARB-304', semester: 'S1', prof: 'د. سليم منصوري', coeff: 2, credits: 4, lecturesCount: 5 },
-        { id: 5, name: 'منهجية البحث والتوثيق', code: 'ARB-305', semester: 'S2', prof: 'د. مريم قاسم', coeff: 2, credits: 3, lecturesCount: 4 },
-        { id: 6, name: 'تعليمية اللغة العربية (Didactique)', code: 'ARB-306', semester: 'S2', prof: 'د. رشيد حمدي', coeff: 3, credits: 5, lecturesCount: 6 }
-      ],
-      lectures: [
-        { id: 1, moduleId: 1, moduleName: 'النحو والصرف', title: 'المحاضرة 01: أحكام المبتدأ والخبر وتطبيقاتها', week: 'الأسبوع 1', size: '2.4 MB', content: 'ملخص شامل لأحكام المبتدأ والخبر، وجوب التقديم والتأخير، مسوغات الابتداء بالنكرة، ونماذج إعرابية تطبيقية لامتحانات المدرسة العليا.' },
-        { id: 2, moduleId: 1, moduleName: 'النحو والصرف', title: 'المحاضرة 02: نواسخ الجملة الاسمية (كان وأخواتها)', week: 'الأسبوع 2', size: '1.8 MB', content: 'دراسة تأصيلية للأفعال الناقصة والتامة ومعانيها، أحكام تقديم خبر كان، ومسائل الخلاف بين البصريين والكوفيين.' },
-        { id: 3, moduleId: 2, moduleName: 'الأدب القديم', title: 'المحاضرة 01: بنية المعلقة الجاهلية وظاهرة الوقوف على الأطلال', week: 'الأسبوع 1', size: '3.1 MB', content: 'تحليل نقدي لمعلقة امرئ القيس وطرفة بن العبد، مع دراسة المقدمة الطللية والأبعاد الرمزية والنفسية للشاعر الجاهلي.' },
-        { id: 4, moduleId: 3, moduleName: 'اللسانيات', title: 'المحاضرة 01: نشأة اللسانيات البنيوية (دي سوسير)', week: 'الأسبوع 1', size: '2.9 MB', content: 'المفاهيم التأسيسية: اللغة واللسان والكلام، الدال والمدلول، العلاقات الاستبدالية والتوزيعية.' }
-      ],
-      schedule: [
-        { id: 1, day: 'SUN', time: '08:30 - 10:00', title: 'الأدب العربي القديم', type: 'محاضرة', room: 'المدرج B', prof: 'أ.د. فاطمة الزهراء' },
-        { id: 2, day: 'SUN', time: '10:30 - 12:00', title: 'النحو والصرف المعمق', type: 'محاضرة', room: 'المدرج A', prof: 'د. أحمد عبد الرحمن' },
-        { id: 3, day: 'MON', time: '08:30 - 10:00', title: 'اللسانيات العامة', type: 'محاضرة', room: 'المدرج C', prof: 'د. كريم بوعلام' },
-        { id: 4, day: 'MON', time: '10:30 - 12:00', title: 'أعمال موجهة TD (نحو)', type: 'TD', room: 'القاعة 14', prof: 'أ. نسيمة حمادي' },
-        { id: 5, day: 'TUE', time: '13:00 - 14:30', title: 'العروض وموسيقى الشعر', type: 'محاضرة', room: 'المدرج A', prof: 'د. سليم منصوري' }
-      ],
-      exams: [
-        { id: 1, module: 'النحو والصرف المعمق', date: '15 جوان 2026', time: '09:00 - 11:00', room: 'المدرج A', seat: 'المقعد 42', daysLeft: '12 يوم متبقي' },
-        { id: 2, module: 'الأدب العربي القديم', date: '18 جوان 2026', time: '09:00 - 11:00', room: 'المدرج B', seat: 'المقعد 42', daysLeft: '15 يوم متبقي' },
-        { id: 3, module: 'اللسانيات والمدارس اللغوية', date: '21 جوان 2026', time: '11:30 - 13:30', room: 'القاعة 08', seat: 'المقعد 19', daysLeft: '18 يوم متبقي' }
-      ],
-      assignments: [
-        { id: 1, title: 'بحث أعمال موجهة: إعراب شواهد سورة الكهف', module: 'النحو والصرف', due: 'الأحد القادم', status: 'قيد الإنجاز' },
-        { id: 2, title: 'قراءة نقدية في كتاب الخصائص لابن جني', module: 'اللسانيات', due: '10 جوان', status: 'تم التسليم' }
-      ],
-      announcements: [
-        { id: 1, title: '📢 تأجيل حصة النحو ليوم الثلاثاء القادم', date: 'منذ ساعتين', sender: 'رئيس القسم', tag: 'عاجل' },
-        { id: 2, title: '📄 فتح باب إيداع عناوين مذكرات التخرج', date: 'أمس', sender: 'إدارة الدراسات', tag: 'هام' }
-      ],
-      cachedVault: [1, 2],
-      activeLecture: null
-    };
+    // --- Data Stores ---
+    const APP_MODULES = [
+      { id: "MOD1", name: "النحو والصرف", code: "ARA101", semester: "S1", coefficient: 4, credits: 6, prof: "د. أحمد عبد الرحمن", lecturesCount: 14 },
+      { id: "MOD2", name: "الأدب الجاهلي وقضاياه", code: "ARA102", semester: "S1", coefficient: 3, credits: 5, prof: "د. فاطمة الزهراء", lecturesCount: 12 },
+      { id: "MOD3", name: "اللسانيات العامة", code: "ARA103", semester: "S1", coefficient: 3, credits: 5, prof: "أ.د. عبد القادر", lecturesCount: 10 },
+      { id: "MOD4", name: "علم العروض والقافية", code: "ARA104", semester: "S2", coefficient: 2, credits: 4, prof: "د. سمية بلحاج", lecturesCount: 8 },
+      { id: "MOD5", name: "فقه اللغة والمعاجم", code: "ARA105", semester: "S2", coefficient: 3, credits: 5, prof: "د. كمال حيمود", lecturesCount: 9 },
+      { id: "MOD6", name: "علوم القرآن والحديث", code: "ARA106", semester: "S2", coefficient: 2, credits: 3, prof: "د. يوسف شريف", lecturesCount: 6 }
+    ];
 
-    // 2. Navigation Controller (Mirroring Android Jetpack Navigation)
-    function navigateTo(routeId) {
-      state.currentRoute = routeId;
+    let APP_LECTURES = [
+      {
+        id: "LEC1",
+        moduleId: "MOD1",
+        moduleName: "النحو والصرف",
+        title: "المحاضرة 01: المبتدأ والخبر وأحكامهما الإعرابية",
+        professor: "د. أحمد عبد الرحمن",
+        date: "2026-02-15",
+        pdfPages: 18,
+        content: "المبتدأ هو الاسم الصريح أو المؤول بالصريح، المجرد عن العوامل اللفظية غير الزائدة، المخبر عنه بحكم.\nوالخبر هو الجزء المتم للفائدة مع المبتدأ، ويكون إما مفرداً أو جملة اسمية أو جملة فعلية أو شبه جملة.\n\nأمثلة تطبيقية:\n- العلمُ نورٌ: العلم مبتدأ مرفوع وعلامة رفعه الضمة، نور خبر مرفوع بالضمة.\n- الطالبُ يقرأُ الكتابَ: الجملة الفعلية في محل رفع خبر."
+      },
+      {
+        id: "LEC2",
+        moduleId: "MOD1",
+        moduleName: "النحو والصرف",
+        title: "المحاضرة 02: نواسخ الابتداء (كان وأخواتها وإن وأخواتها)",
+        professor: "د. أحمد عبد الرحمن",
+        date: "2026-02-22",
+        pdfPages: 22,
+        content: "تدخل النواسخ على الجملة الاسمية فتغير حكم المبتدأ والخبر:\n1. كان وأخواتها: ترفع المبتدأ ويسمى اسمها، وتنصب الخبر ويسمى خبرها.\n2. إن وأخواتها: تنصب المبتدأ ويسمى اسمها، وترفع الخبر ويسمى خبرها."
+      },
+      {
+        id: "LEC3",
+        moduleId: "MOD2",
+        moduleName: "الأدب الجاهلي وقضاياه",
+        title: "المحاضرة 01: بنية المعلقة الجاهلية وظاهرة الوقوف على الأطلال",
+        professor: "د. فاطمة الزهراء",
+        date: "2026-02-18",
+        pdfPages: 16,
+        content: "تتميز القصيدة الجاهلية ببنية تقليدية محكمة تبدأ عادة بالمقدمة الطللية الغزلية، ثم وصف الرحلة والناقة، وصولاً إلى الغرض الرئيسي (المديح أو الفخر أو الحماسة)."
+      },
+      {
+        id: "LEC4",
+        moduleId: "MOD3",
+        moduleName: "اللسانيات العامة",
+        title: "المحاضرة 01: المبادئ التأسيسية لدوسوسير (اللغة والكلام)",
+        professor: "أ.د. عبد القادر",
+        date: "2026-02-20",
+        pdfPages: 14,
+        content: "أسس فردينان دو سوسير علم اللسانيات الحديث عبر التمييز بين:\n1. اللسان (Langue): النسق الاجتماعي المجرد للقواعد.\n2. الكلام (Parole): الإنجاز الفردي الملموس للسان."
+      }
+    ];
 
-      // Hide all view sections
-      document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+    const APP_SCHEDULE = [
+      { id: "SCH1", day: "SUN", moduleName: "النحو والصرف", type: "محاضرة رسمية", time: "08:30 - 10:00", room: "المدرج A", prof: "د. أحمد عبد الرحمن" },
+      { id: "SCH2", day: "SUN", moduleName: "الأدب الجاهلي", type: "أعمال موجهة (TD)", time: "10:30 - 12:00", room: "القاعة 14", prof: "أ. بلال مراد" },
+      { id: "SCH3", day: "MON", moduleName: "اللسانيات العامة", type: "محاضرة رسمية", time: "09:00 - 10:30", room: "المدرج B", prof: "أ.د. عبد القادر" },
+      { id: "SCH4", day: "TUE", moduleName: "علم العروض والقافية", type: "تطبيق (TD)", time: "13:00 - 14:30", room: "القاعة 08", prof: "د. سمية بلحاج" },
+      { id: "SCH5", day: "WED", moduleName: "فقه اللغة", type: "محاضرة رسمية", time: "10:30 - 12:00", room: "المدرج C", prof: "د. كمال حيمود" },
+      { id: "SCH6", day: "THU", moduleName: "علوم القرآن", type: "محاضرة رسمية", time: "08:30 - 10:00", room: "المدرج A", prof: "د. يوسف شريف" }
+    ];
 
-      // Show targeted view
-      const targetView = document.getElementById('view-' + routeId);
-      if (targetView) targetView.classList.add('active');
+    const APP_EXAMS = [
+      { id: "EX1", moduleName: "النحو والصرف", date: "2026-06-08", time: "09:00 - 11:00", room: "المدرج A", seat: "المقعد 42", daysLeft: 12 },
+      { id: "EX2", moduleName: "الأدب الجاهلي", date: "2026-06-11", time: "09:00 - 11:00", room: "المدرج A", seat: "المقعد 42", daysLeft: 15 },
+      { id: "EX3", moduleName: "اللسانيات العامة", date: "2026-06-15", time: "09:00 - 11:00", room: "المدرج B", seat: "المقعد 18", daysLeft: 19 },
+      { id: "EX4", moduleName: "علم العروض", date: "2026-06-18", time: "09:00 - 11:00", room: "القاعة 12", seat: "المقعد 05", daysLeft: 22 }
+    ];
+
+    const APP_ASSIGNMENTS = [
+      { id: "AS1", moduleName: "النحو والصرف", title: "إعراب شواهد سورة الكهف من الآية 1 إلى 10", deadline: "2026-03-05", status: "قيد الإنجاز" },
+      { id: "AS2", moduleName: "الأدب الجاهلي", title: "بحث حول الصورة الفنية في معلقة امرئ القيس", deadline: "2026-03-12", status: "تم التسليم" },
+      { id: "AS3", moduleName: "اللسانيات العامة", title: "تلخيص الفصل الأول من كتاب محاضرات في اللسانيات", deadline: "2026-03-20", status: "جديد" }
+    ];
+
+    const APP_GRADES = [
+      { moduleName: "النحو والصرف", tdGrade: 16.5, examGrade: 15.0, finalGrade: 15.6, coeff: 4, status: "مكتسب" },
+      { moduleName: "الأدب الجاهلي", tdGrade: 15.0, examGrade: 16.0, finalGrade: 15.6, coeff: 3, status: "مكتسب" },
+      { moduleName: "اللسانيات العامة", tdGrade: 14.5, examGrade: 16.5, finalGrade: 15.7, coeff: 3, status: "مكتسب" },
+      { moduleName: "علم العروض", tdGrade: 17.0, examGrade: 14.0, finalGrade: 15.2, coeff: 2, status: "مكتسب" },
+      { moduleName: "فقه اللغة", tdGrade: 16.0, examGrade: 16.0, finalGrade: 16.0, coeff: 3, status: "مكتسب" },
+      { moduleName: "علوم القرآن", tdGrade: 15.5, examGrade: 17.0, finalGrade: 16.4, coeff: 2, status: "مكتسب" }
+    ];
+
+    let APP_ANNOUNCEMENTS = [
+      { id: "ANN1", title: "تحديد موعد امتحان النحو العربي الاستدراكي", date: "قبل ساعتين", body: "تعلن إدارة القسم لطلبة الفوج 03 أن الامتحان الاستدراكي لمقياس النحو سيكون يوم الخميس القادم على الساعة 10:00 صباحاً بالمدرج A.", tag: "عاجل" },
+      { id: "ANN2", title: "برنامج النشاطات الأكاديمية والندوات", date: "أمس", body: "ينظم مخبر الدراسات الأدبية واللسانية ندوة فكرية حول المناهج النقدية المعاصرة يوم الثلاثاء بالمكتبة المركزية.", tag: "عام" },
+      { id: "ANN3", title: "إيداع مواضيع مذكرات التخرج", date: "قبل 3 أيام", body: "آخر أجل لإيداع استمارات اقتراح عناوين مذكرات التخرج والتأطير هو نهاية الأسبوع الجاري.", tag: "هام" }
+    ];
+
+    let STUDENT_NOTES = [
+      { id: "N1", title: "ملاحظات حول إعراب الجمل التي لا محل لها", moduleName: "النحو والصرف", content: "الجمل التي لا محل لها من الإعراب سبعة: الابتدائية، الاستئنافية، الاعتراضية، التفسيرية، صلة الموصول، جواب القسم، وجواب الشرط غير الجازم." },
+      { id: "N2", title: "عناصر المقدمة الطللية", moduleName: "الأدب الجاهلي", content: "البكاء على الديار واستيقاف الصحب وذكر أسماء المواضع مثل حومة الدخول وحومل وسقط اللوى." }
+    ];
+
+    let currentActiveLecture = null;
+    let currentActiveScreen = 'HOME';
+
+    // --- Core Navigation ---
+    function navigateAppTo(route) {
+      currentActiveScreen = route;
+      
+      // Update screen visibility
+      document.querySelectorAll('.screen-view').forEach(s => s.classList.remove('active'));
+      const targetScreen = document.getElementById(`screen-${route}`);
+      if (targetScreen) targetScreen.classList.add('active');
+
+      // Update Bottom Nav active state
+      document.querySelectorAll('.nav-tab-button').forEach(btn => btn.classList.remove('active'));
+      const activeTabBtn = document.getElementById(`tab-btn-${route}`);
+      if (activeTabBtn) activeTabBtn.classList.add('active');
 
       // Update Header Back Button
-      const backBtn = document.getElementById('btn-header-back');
-      if (routeId === 'HOME') {
+      const backBtn = document.getElementById('btn-back-header');
+      const adminExitBtn = document.getElementById('btn-admin-exit');
+      const subtitle = document.getElementById('header-subtitle-text');
+
+      if (route === 'HOME') {
         backBtn.style.display = 'none';
-        document.getElementById('header-subtitle').innerText = 'المدرسة العليا للأساتذة • قسنطينة';
+        adminExitBtn.style.display = 'none';
+        subtitle.textContent = "رفيقك الأكاديمي الشامل";
+      } else if (route === 'ADMIN') {
+        backBtn.style.display = 'none';
+        adminExitBtn.style.display = 'flex';
+        subtitle.textContent = "لوحة تحكم الأستاذ والإدارة";
       } else {
         backBtn.style.display = 'flex';
-        const titles = {
-          'COURSES': 'المقررات والمقاييس',
-          'LECTURES': 'المحاضرات وملفات PDF',
-          'AI_CHAT': 'المساعد الأكاديمي 24/7',
-          'SCHEDULE': 'الجدول الأسبوعي',
-          'EXAMS': 'مواعيد الامتحانات',
-          'ASSIGNMENTS': 'الواجبات والأعمال',
-          'GRADES': 'كشف النقاط والمعدل',
-          'GROUP': 'الفوج والزملاء',
-          'ANNOUNCEMENTS': 'الإعلانات الرسمية',
-          'OFFLINE_CACHE': 'الخزنة الأكاديمية (أوفلاين)',
-          'PROFILE': 'بطاقة الطالب وحسابي',
-          'ADMIN': 'لوحة تحكم المشرف'
-        };
-        document.getElementById('header-subtitle').innerText = titles[routeId] || 'طالب';
+        adminExitBtn.style.display = 'none';
+        subtitle.textContent = getScreenArabicTitle(route);
       }
 
-      // Update Bottom Nav Active States
-      document.querySelectorAll('.nav-tab-item').forEach(tab => tab.classList.remove('active'));
-      const activeNavTab = document.getElementById('nav-btn-' + routeId);
-      if (activeNavTab) activeNavTab.classList.add('active');
+      // Populate view data
+      if (route === 'COURSES') renderCoursesTab('ALL');
+      if (route === 'LECTURES') renderLecturesTab('ALL');
+      if (route === 'SCHEDULE') renderScheduleDay('SUN');
+      if (route === 'EXAMS') renderExams();
+      if (route === 'ASSIGNMENTS') renderAssignments();
+      if (route === 'GRADES') renderGrades();
+      if (route === 'GROUP') renderGroup();
+      if (route === 'ANNOUNCEMENTS') renderAnnouncements();
+      if (route === 'OFFLINE_CACHE') renderOfflineVault();
+      if (route === 'MY_FILES') renderMyFilesTab(0);
 
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 3. Render Functions
-    function renderCourses(filter = 'ALL') {
-      const container = document.getElementById('courses-list');
-      const filtered = filter === 'ALL' ? state.modules : state.modules.filter(m => m.semester === filter);
+    function getScreenArabicTitle(route) {
+      const titles = {
+        COURSES: 'المقررات والمقاييس الدراسية',
+        LECTURES: 'المحاضرات وملفات PDF',
+        AI_CHAT: 'المساعد الأكاديمي الذكي 24/7',
+        SCHEDULE: 'الجدول الدراسي والتوقيت الأسبوعي',
+        EXAMS: 'مواعيد الامتحانات الرسمية',
+        ASSIGNMENTS: 'الواجبات والأعمال الموجهة',
+        GRADES: 'كشف النقاط وحساب المعدل',
+        GROUP: 'الفوج وزملاء الدفعة',
+        ANNOUNCEMENTS: 'الإعلانات والتنبيهات الإدارية',
+        OFFLINE_CACHE: 'الخزنة الأكاديمية (Room DB)',
+        MY_FILES: 'ملفاتي وملاحظاتي الأكاديمية',
+        PROFILE: 'الملف الشخصي والبطاقة الرقمية',
+        ADMIN: 'لوحة تحكم الأستاذ والمشرف'
+      };
+      return titles[route] || 'طالب الجامعي';
+    }
 
+    // --- Renderers ---
+    function renderCoursesTab(sem, el) {
+      if (el) {
+        document.querySelectorAll('#screen-COURSES .pill-tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+      }
+      const container = document.getElementById('courses-items-container');
+      const filtered = sem === 'ALL' ? APP_MODULES : APP_MODULES.filter(m => m.semester === sem);
+      
       container.innerHTML = filtered.map(m => `
-        <div class="module-card">
-          <div class="module-header">
-            <div class="module-title-box">
+        <div class="module-item-card">
+          <div class="module-card-top">
+            <div>
               <h3>${m.name}</h3>
-              <span>${m.prof}</span>
+              <span>الأستاذ المحاضر: ${m.prof}</span>
             </div>
-            <span class="module-code-badge">${m.code}</span>
+            <span class="badge-code">${m.code}</span>
           </div>
-          <div class="module-meta">
-            <span><strong>المعامل:</strong> ${m.coeff}</span>
-            <span>•</span>
-            <span><strong>الرصيد:</strong> ${m.credits}</span>
-            <span>•</span>
-            <span><strong>السداسي:</strong> ${m.semester}</span>
+          <div class="module-meta-row">
+            <span>المعامل: <strong>${m.coefficient}</strong></span>
+            <span>الأرصدة: <strong>${m.credits}</strong></span>
+            <span>المحاضرات: <strong>${m.lecturesCount}</strong></span>
           </div>
-          <div class="module-actions">
-            <button class="btn-sm btn-primary" onclick="filterLectures('${m.name.substring(0,4)}'); navigateTo('LECTURES')">
-              <i class="fa-solid fa-file-pdf"></i> المحاضرات (${m.lecturesCount})
-            </button>
+          <div class="module-btns">
+            <button class="btn-action-sm btn-outlined" onclick="openChatWithModulePrompt('${m.name}')"><i class="fa-solid fa-wand-magic-sparkles"></i> اسأل الذكاء عن المقياس</button>
+            <button class="btn-action-sm btn-primary" onclick="navigateAppTo('LECTURES')"><i class="fa-solid fa-folder-open"></i> تصفح المحاضرات</button>
           </div>
         </div>
       `).join('');
     }
 
-    function renderLectures(filter = 'ALL') {
-      const container = document.getElementById('lectures-list');
-      const filtered = filter === 'ALL' ? state.lectures : state.lectures.filter(l => l.moduleName.includes(filter) || l.title.includes(filter));
+    function renderLecturesTab(tag, el) {
+      if (el) {
+        document.querySelectorAll('#lecture-tabs-row .pill-tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+      }
+      const container = document.getElementById('lectures-items-container');
+      const filtered = tag === 'ALL' ? APP_LECTURES : APP_LECTURES.filter(l => l.moduleName.includes(tag));
 
       container.innerHTML = filtered.map(l => `
-        <div class="lecture-card">
-          <div class="lecture-pdf-icon"><i class="fa-solid fa-file-pdf"></i></div>
-          <div class="lecture-details">
-            <h4>${l.title}</h4>
-            <div class="lecture-sub">${l.moduleName} • ${l.week} • ${l.size}</div>
+        <div class="lecture-item-card">
+          <div class="pdf-circle-icon"><i class="fa-solid fa-file-pdf"></i></div>
+          <div style="flex: 1;">
+            <h4 style="font-size: 13.5px; font-weight: 800; color: var(--on-surface);">${l.title}</h4>
+            <p style="font-size: 11px; color: var(--on-surface-variant);">${l.moduleName} • ${l.professor} • ${l.pdfPages} صفحة</p>
           </div>
-          <div class="lecture-actions">
-            <button class="btn-sm btn-primary" onclick="openPdfModal(${l.id})">قراءة</button>
-          </div>
+          <button class="btn-action-sm btn-primary" onclick="openPdfReaderModal('${l.id}')"><i class="fa-solid fa-book-reader"></i> قراءة</button>
         </div>
       `).join('');
     }
 
-    function renderSchedule(day = 'SUN') {
-      const container = document.getElementById('schedule-list');
-      const items = state.schedule.filter(s => s.day === day);
+    function renderScheduleDay(day, el) {
+      if (el) {
+        document.querySelectorAll('#screen-SCHEDULE .pill-tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+      }
+      const container = document.getElementById('schedule-items-container');
+      const items = APP_SCHEDULE.filter(s => s.day === day);
 
       if (items.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-secondary);">لا توجد حصص مبرمجة في هذا اليوم.</div>`;
+        container.innerHTML = `<div class="module-item-card" style="text-align: center; color: var(--on-surface-variant);">لا توجد حصص مجدولة لهذا اليوم.</div>`;
         return;
       }
 
       container.innerHTML = items.map(s => `
-        <div class="schedule-card">
-          <div class="schedule-time">
-            <span>${s.time.split('-')[0]}</span>
-            <span>${s.time.split('-')[1]}</span>
+        <div class="preview-card" style="border-right: 4px solid var(--primary);">
+          <div class="preview-icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="preview-details">
+            <h4>${s.moduleName}</h4>
+            <p>${s.type} • ${s.room} • ${s.prof}</p>
           </div>
-          <div class="schedule-info">
-            <h4>${s.title}</h4>
-            <p style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">${s.prof} • ${s.room}</p>
-            <div class="schedule-tags">
-              <span class="badge-tag ${s.type === 'TD' ? 'badge-td' : 'badge-lecture'}">${s.type}</span>
-            </div>
-          </div>
+          <div class="badge-time">${s.time}</div>
         </div>
       `).join('');
     }
 
     function renderExams() {
-      const container = document.getElementById('exams-list');
-      container.innerHTML = state.exams.map(e => `
-        <div class="exam-card">
-          <div class="exam-header">
-            <h4 style="font-size: 14px; font-weight: 800;">${e.module}</h4>
-            <span class="exam-countdown"><i class="fa-regular fa-clock"></i> ${e.daysLeft}</span>
+      const container = document.getElementById('exams-items-container');
+      container.innerHTML = APP_EXAMS.map(e => `
+        <div class="module-item-card" style="border-right: 4px solid var(--crimson);">
+          <div class="module-card-top">
+            <div>
+              <h3>${e.moduleName}</h3>
+              <span>التوقيت: ${e.time} • ${e.room}</span>
+            </div>
+            <span class="badge-code" style="background: rgba(239,68,68,0.15); color: var(--crimson);">باقي ${e.daysLeft} يوم</span>
           </div>
-          <div style="font-size: 12px; color: var(--text-secondary);">
-            📅 <strong>التاريخ:</strong> ${e.date} (${e.time})<br>
-            📍 <strong>المكان:</strong> ${e.room} • ${e.seat}
+          <div class="module-meta-row">
+            <span>التاريخ: <strong>${e.date}</strong></span>
+            <span>رقم المقعد المخصص: <strong>${e.seat}</strong></span>
           </div>
         </div>
       `).join('');
     }
 
     function renderAssignments() {
-      const container = document.getElementById('assignments-list');
-      container.innerHTML = state.assignments.map(a => `
-        <div class="module-card">
-          <div style="display:flex; justify-content:space-between;">
-            <h4 style="font-size: 13.5px; font-weight: 800;">${a.title}</h4>
-            <span class="badge-tag" style="background: rgba(59,130,246,0.15); color: var(--blue);">${a.status}</span>
+      const container = document.getElementById('assignments-items-container');
+      container.innerHTML = APP_ASSIGNMENTS.map(a => `
+        <div class="module-item-card">
+          <div class="module-card-top">
+            <div>
+              <h3>${a.title}</h3>
+              <span>المقياس: ${a.moduleName}</span>
+            </div>
+            <span class="badge-code" style="background: var(--primary-container); color: var(--primary);">${a.status}</span>
           </div>
-          <p style="font-size: 11px; color: var(--text-secondary);">${a.module} • موعد التسليم: ${a.due}</p>
-          <div style="display:flex; justify-content:flex-end;">
-            <button class="btn-sm btn-outline"><i class="fa-solid fa-arrow-up-from-bracket"></i> تسليم الحل</button>
+          <div class="module-meta-row">
+            <span>آخر أجل للتسليم: <strong>${a.deadline}</strong></span>
           </div>
         </div>
       `).join('');
     }
 
     function renderGrades() {
-      const container = document.getElementById('grades-list');
-      container.innerHTML = state.modules.map(m => `
-        <div class="module-card" style="padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+      const container = document.getElementById('grades-items-container');
+      container.innerHTML = APP_GRADES.map(g => `
+        <div class="module-item-card">
+          <div class="module-card-top">
             <div>
-              <h4 style="font-size: 13px; font-weight: 800;">${m.name}</h4>
-              <span style="font-size: 10.5px; color: var(--text-secondary);">المعامل: ${m.coeff} • TD + امتحان</span>
+              <h3>${g.moduleName}</h3>
+              <span>المعامل: ${g.coeff}</span>
             </div>
-            <div style="text-align: left;">
-              <span style="font-size: 14px; font-weight: 900; color: var(--primary); font-family: 'Fira Code', monospace;">15.50</span>
-              <div style="font-size: 10px; color: var(--green); font-weight: 700;">ناجح</div>
-            </div>
+            <span class="badge-code" style="font-size: 13px; font-weight: 900;">${g.finalGrade} / 20</span>
+          </div>
+          <div class="module-meta-row">
+            <span>نقطة الأعمال الموجهة TD: <strong>${g.tdGrade}</strong></span>
+            <span>نقطة الامتحان النهائي: <strong>${g.examGrade}</strong></span>
           </div>
         </div>
       `).join('');
     }
 
-    function renderPeers() {
-      const container = document.getElementById('peers-list');
+    function renderGroup() {
       const peers = [
-        { name: 'أنس بن سالم', role: 'مندوب الفوج', sub: 'الفوج الفرعي A' },
-        { name: 'ياسمين بلقاسم', role: 'نائبة المندوب', sub: 'الفوج الفرعي B' },
-        { name: 'حمزة بوجمعة', role: 'طالب', sub: 'الفوج الفرعي A' },
-        { name: 'سارة مرابط', role: 'طالبة', sub: 'الفوج الفرعي B' }
+        "محمد بن صغير (طالب)", "أنس بن سالم (مندوب الدفعة)", "خالد معمري", "أمينة بوزيد",
+        "سارة قادري", "ياسين طاهري", "رمزي بوشامة", "نور الهدى حمادي"
       ];
-      container.innerHTML = peers.map(p => `
-        <div class="module-card" style="padding: 10px 14px; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-container); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px;">
-              ${p.name.charAt(0)}
-            </div>
-            <div>
-              <h5 style="font-size: 12.5px; font-weight: 800;">${p.name}</h5>
-              <span style="font-size: 10px; color: var(--text-secondary);">${p.sub}</span>
-            </div>
+      const container = document.getElementById('group-peers-container');
+      container.innerHTML = peers.map((p, i) => `
+        <div class="preview-card" style="padding: 10px 14px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-container); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">
+            ${i + 1}
           </div>
-          <span class="badge-tag" style="background: var(--surface-variant); color: var(--text-secondary); font-size: 9.5px;">${p.role}</span>
+          <div style="flex: 1; font-size: 13px; font-weight: 700; color: var(--on-surface);">${p}</div>
         </div>
       `).join('');
     }
 
     function renderAnnouncements() {
-      const container = document.getElementById('announcements-list');
-      container.innerHTML = state.announcements.map(a => `
-        <div class="module-card">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="font-size: 13.5px; font-weight: 800;">${a.title}</h4>
-            <span class="badge-tag" style="background: rgba(239,68,68,0.15); color: var(--crimson);">${a.tag}</span>
+      const container = document.getElementById('announcements-items-container');
+      container.innerHTML = APP_ANNOUNCEMENTS.map(a => `
+        <div class="module-item-card" style="border-right: 4px solid var(--primary);">
+          <div class="module-card-top">
+            <div>
+              <h3>${a.title}</h3>
+              <span style="font-size: 10.5px;">${a.date}</span>
+            </div>
+            <span class="badge-code">${a.tag}</span>
           </div>
-          <p style="font-size: 11px; color: var(--text-secondary);">${a.sender} • ${a.date}</p>
+          <p style="font-size: 12.5px; color: var(--on-surface); line-height: 1.5; margin-top: 4px;">${a.body}</p>
         </div>
       `).join('');
     }
 
     function renderOfflineVault() {
-      const container = document.getElementById('offline-vault-list');
-      const cached = state.lectures.filter(l => state.cachedVault.includes(l.id));
-      container.innerHTML = cached.map(l => `
-        <div class="lecture-card">
-          <div class="lecture-pdf-icon" style="background: rgba(16,185,129,0.1); color: var(--green);"><i class="fa-solid fa-circle-check"></i></div>
-          <div class="lecture-details">
-            <h4>${l.title}</h4>
-            <div class="lecture-sub">محفوظة محلياً بالكامل (Room Cache)</div>
+      const container = document.getElementById('offline-vault-items-container');
+      container.innerHTML = APP_LECTURES.map(l => `
+        <div class="lecture-item-card">
+          <div class="pdf-circle-icon" style="color: var(--green); background: rgba(16,185,129,0.15);"><i class="fa-solid fa-circle-check"></i></div>
+          <div style="flex: 1;">
+            <h4 style="font-size: 13px; font-weight: 800; color: var(--on-surface);">${l.title}</h4>
+            <p style="font-size: 11px; color: var(--on-surface-variant);">${l.moduleName} • جاهز بدون إنترنت</p>
           </div>
-          <button class="btn-sm btn-primary" onclick="openPdfModal(${l.id})">فتح</button>
+          <button class="btn-action-sm btn-outlined" onclick="openPdfReaderModal('${l.id}')">فتح</button>
         </div>
       `).join('');
     }
 
-    // 4. Modal PDF Viewer
-    function openPdfModal(lectureId) {
-      const lecture = state.lectures.find(l => l.id === lectureId);
-      if (!lecture) return;
-      state.activeLecture = lecture;
+    function renderMyFilesTab(tabIdx, el) {
+      if (el) {
+        document.querySelectorAll('#screen-MY_FILES .pill-tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+      }
+      const container = document.getElementById('myfiles-items-container');
+      if (tabIdx === 0 || tabIdx === 1) {
+        container.innerHTML = APP_LECTURES.map(l => `
+          <div class="lecture-item-card">
+            <div class="pdf-circle-icon"><i class="fa-solid fa-bookmark"></i></div>
+            <div style="flex: 1;">
+              <h4 style="font-size: 13px; font-weight: 800;">${l.title}</h4>
+              <p style="font-size: 11px; color: var(--on-surface-variant);">${l.moduleName}</p>
+            </div>
+            <button class="btn-action-sm btn-primary" onclick="openPdfReaderModal('${l.id}')">قراءة</button>
+          </div>
+        `).join('');
+      } else {
+        container.innerHTML = STUDENT_NOTES.map(n => `
+          <div class="module-item-card">
+            <div class="module-card-top">
+              <h3>${n.title}</h3>
+              <span class="badge-code">${n.moduleName}</span>
+            </div>
+            <p style="font-size: 12.5px; color: var(--on-surface); line-height: 1.5;">${n.content}</p>
+          </div>
+        `).join('');
+      }
+    }
 
-      document.getElementById('pdf-modal-title').innerText = lecture.title;
-      document.getElementById('pdf-modal-info').innerText = `${lecture.moduleName} • ${lecture.week} • حجم الملف: ${lecture.size}`;
-      document.getElementById('pdf-modal-content').innerHTML = `
-        <h4 style="color: var(--primary); margin-bottom: 8px;">محتوى المحاضرة المعتمد:</h4>
-        <p style="font-size: 12.5px; line-height: 1.6;">${lecture.content}</p>
-        <div style="margin-top: 14px; padding: 10px; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 11px; color: var(--text-secondary);">
-          <i class="fa-solid fa-circle-info"></i> تم تجهيز هذا المستند للمراجعة الجامعية وفق المنهاج الوزاري الجزائري.
+    // --- PDF Modal Operations ---
+    function openPdfReaderModal(lecId) {
+      const lec = APP_LECTURES.find(l => l.id === lecId);
+      if (!lec) return;
+      currentActiveLecture = lec;
+      document.getElementById('modal-doc-title').textContent = lec.title;
+      document.getElementById('modal-doc-body').innerHTML = `
+        <div style="background: var(--surface-variant); padding: 10px 14px; border-radius: 12px; margin-bottom: 12px; font-size: 11.5px;">
+          <strong>المقياس:</strong> ${lec.moduleName} | <strong>الأستاذ:</strong> ${lec.professor} | <strong>الصفحات:</strong> ${lec.pdfPages}
         </div>
+        <div style="white-space: pre-line; line-height: 1.8;">${lec.content}</div>
       `;
       document.getElementById('pdf-modal').classList.add('active');
     }
@@ -1859,175 +1879,173 @@
     }
 
     function saveActiveLectureOffline() {
-      if (state.activeLecture && !state.cachedVault.includes(state.activeLecture.id)) {
-        state.cachedVault.push(state.activeLecture.id);
-        document.getElementById('cached-count').innerText = state.cachedVault.length;
-        alert('تم حفظ المحاضرة في الخزنة الأوفلاين بنجاح!');
-        renderOfflineVault();
-      } else {
-        alert('المحاضرة محفوظة مسبقاً في الخزنة!');
-      }
+      showToast("تم حفظ المحاضرة في الخزنة الأكاديمية (Room DB) بنجاح!");
+      closePdfModal();
     }
 
-    // 5. Chatbot Gemini Engine
-    function sendPrompt(text) {
-      document.getElementById('chat-input-field').value = text;
-      sendChatMessage();
+    // --- AI Chatbot Engine ---
+    function openChatWithModulePrompt(modName) {
+      navigateAppTo('AI_CHAT');
+      sendChatPrompt(`اشرح لي أهم محاور ومسائل مقياس (${modName}) المقررة في السداسي الحالي`);
     }
 
-    async function sendChatMessage() {
-      const input = document.getElementById('chat-input-field');
+    function sendChatPrompt(text) {
+      const input = document.getElementById('chat-input');
+      input.value = text;
+      executeSendChat();
+    }
+
+    function executeSendChat() {
+      const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
-
-      const chatBox = document.getElementById('chat-box');
-
-      // 1. Add Student Bubble
-      chatBox.innerHTML += `
-        <div class="chat-bubble student">
-          ${text}
-          <div class="chat-time">الآن</div>
-        </div>
-      `;
       input.value = '';
-      chatBox.scrollTop = chatBox.scrollHeight;
 
-      // 2. Add Thinking shimmer
-      const thinkingId = 'thinking-' + Date.now();
+      const chatBox = document.getElementById('chatbot-box');
+      
+      // Student message
       chatBox.innerHTML += `
-        <div class="chat-bubble ai" id="${thinkingId}">
-          <i class="fa-solid fa-spinner fa-spin"></i> المساعد يفكّر في الإجابة الأكاديمية...
+        <div class="chat-msg-row user">
+          <div class="msg-bubble user">
+            ${escapeHtml(text)}
+            <div class="msg-time">الآن</div>
+          </div>
         </div>
       `;
+
+      // Auto-scroll
       chatBox.scrollTop = chatBox.scrollHeight;
 
-      // 3. Generate Intelligent Academic Response
+      // Simulated Intelligent Response
       setTimeout(() => {
-        const thinkingElem = document.getElementById(thinkingId);
-        let reply = "";
-
+        let aiReply = "أهلاً بك! بخصوص استفسارك الأكاديمي:\n\n";
         if (text.includes("مبتدأ") || text.includes("نحو")) {
-          reply = `**شرح مبسط لقاعدة المبتدأ والخبر:**\n\n1. **المبتدأ:** اسم مرفوع يقع غالباً في أول الجملة (مثال: *العلمُ نورٌ*).\n2. **أنواع الخبر:**\n   - مفرد: *الأستاذُ حاضرٌ*\n   - جملة اسمية: *الجامعةُ أسوارُها عالية*\n   - جملة فعلية: *الطالبُ يجتهدُ*\n   - شبه جملة: *الكتابُ فوقَ الطاولةِ*.\n\n📌 **تنبيه للامتحان:** يجوز تقديم الخبر وجوباً إذا كان المبتدأ نكرة والخبر شبه جملة (مثال: *في القسمِ طالبٌ*).`;
+          aiReply += "📌 **أحكام المبتدأ والخبر في النحو العربي:**\n\n1. **الأصل في المبتدأ:** أن يكون اسماً معرفة مرفوعاً مجرداً من العوامل اللفظية.\n2. **مسوغات الابتداء بالنكرة:** إذا وُصِفَت (مثل: رجلٌ كريمٌ عندنا)، أو سبقت بنفي أو استفهام (ما أحدٌ خيرٌ منك).\n3. **أنواع الخبر:** مفرد، جملة فعلية، جملة اسمية، وشبه جملة (ظرف أو جار ومجرور).";
         } else if (text.includes("معدل") || text.includes("LMD")) {
-          reply = `**كيفية حساب معدل المقياس في نظام LMD:**\n\n- المعادلة المعتمدة: \`معدل المقياس = (علامة الامتحان × 60%) + (علامة المراقبة المستمرة TD × 40%)\`\n- ثم يُضرب المعدل في معامل المقياس للحصول على المجموع الإجمالي.`;
+          aiReply += "📊 **طريقة حساب المعدل الفصلي لنظام LMD:**\n\n- نقطة المقياس = `(نقطة TD × 40%) + (نقطة الامتحان × 60%)`\n- مجموع النقاط الموزونة = `مجموع (نقطة كل مقياس × معامله)`\n- المعدل الفصلي = `مجموع النقاط الموزونة ÷ مجموع المعاملات الإجمالية`.\n\nتعتبر الوحدة مكتسبة إذا كان معدلها ≥ 10/20.";
         } else {
-          reply = `شكراً لسؤالك الأكاديمي القيم حول: "${text}".\n\nبصفتي رفيقك الأكاديمي في المدرسة العليا للأساتذة، ننصحك دائماً بمراجعة ملخصات المحاضرات المحفوظة في قسم **المحاضرات وملفات PDF** والاطلاع على أسئلة الامتحانات السابقة.\n\nهل تحتاج تفصيلاً إضافياً في هذا الجانب؟`;
+          aiReply += `لقد تم تحليل سؤالك حول **"${text}"** وفق منهاج المدرسة العليا للأساتذة. يمكنك مراجعة المحاضرات المرفقة في قسم المقررات، أو طلب تلخيص لنقاط محددة.`;
         }
 
-        if (thinkingElem) {
-          thinkingElem.innerHTML = marked.parse(reply) + `<div class="chat-time">الآن</div>`;
-        }
+        chatBox.innerHTML += `
+          <div class="chat-msg-row bot">
+            <div class="msg-bubble bot">
+              <strong>المساعد الأكاديمي (Gemini AI):</strong><br>
+              <div style="white-space: pre-line; margin-top: 4px;">${aiReply}</div>
+              <div class="msg-time">الآن</div>
+            </div>
+          </div>
+        `;
         chatBox.scrollTop = chatBox.scrollHeight;
       }, 700);
     }
 
-    // 6. Admin Actions
-    function adminAddLecture() {
+    // --- Admin Operations ---
+    function adminPublishLecture() {
       const title = document.getElementById('admin-lec-title').value.trim();
-      const moduleName = document.getElementById('admin-lec-module').value.trim();
-      if (!title) { alert('يرجى كتابة عنوان المحاضرة'); return; }
+      const mod = document.getElementById('admin-lec-module').value;
+      const content = document.getElementById('admin-lec-content').value.trim();
 
-      state.lectures.unshift({
-        id: Date.now(),
-        moduleId: 1,
-        moduleName: moduleName || 'عام',
+      if (!title) {
+        showToast("يرجى إدخال عنوان المحاضرة");
+        return;
+      }
+
+      APP_LECTURES.unshift({
+        id: "LEC_" + Date.now(),
+        moduleId: "MOD1",
+        moduleName: mod,
         title: title,
-        week: 'الأسبوع الحالي',
-        size: '1.5 MB',
-        content: 'تمت إضافة هذه المحاضرة بواسطة المشرف / ممثل الدفعة.'
+        professor: "د. المشرف الأكاديمي",
+        date: new Date().toISOString().split('T')[0],
+        pdfPages: 12,
+        content: content || "محتوى المحاضرة الأكاديمية ومراجع الدرس..."
       });
 
-      alert('تم نشر المحاضرة لجميع الطلبة بنجاح!');
       document.getElementById('admin-lec-title').value = '';
-      renderLectures();
-      navigateTo('LECTURES');
+      document.getElementById('admin-lec-content').value = '';
+      showToast("تم نشر المحاضرة لجميع طلبة الفوج بنجاح!");
+      navigateAppTo('LECTURES');
     }
 
-    function adminAddAnnouncement() {
+    function adminPublishAnnouncement() {
       const title = document.getElementById('admin-ann-title').value.trim();
-      if (!title) { alert('يرجى كتابة عنوان الإعلان'); return; }
+      const body = document.getElementById('admin-ann-body').value.trim();
 
-      state.announcements.unshift({
-        id: Date.now(),
+      if (!title || !body) {
+        showToast("يرجى ملء عنوان ونص الإعلان");
+        return;
+      }
+
+      APP_ANNOUNCEMENTS.unshift({
+        id: "ANN_" + Date.now(),
         title: title,
-        date: 'الآن',
-        sender: 'إدارة الكلية',
-        tag: 'عاجل'
+        date: "الآن",
+        body: body,
+        tag: "عاجل"
       });
 
-      alert('تم بث الإعلان بنجاح!');
       document.getElementById('admin-ann-title').value = '';
-      renderAnnouncements();
-      navigateTo('ANNOUNCEMENTS');
+      document.getElementById('admin-ann-body').value = '';
+      showToast("تم بث التنبيه لطلبة الفوج فوراً!");
+      navigateAppTo('ANNOUNCEMENTS');
     }
 
-    // 7. Theme & Filtering Helpers
-    function toggleTheme() {
-      state.isDarkMode = !state.isDarkMode;
-      document.body.classList.toggle('dark-mode', state.isDarkMode);
-      const icon = document.querySelector('#btn-theme-toggle i');
-      if (icon) {
-        icon.className = state.isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-      }
+    function openAddNotePrompt() {
+      const title = prompt("عنوان الملاحظة الأكاديمية:");
+      if (!title) return;
+      const content = prompt("نص الملاحظة أو التلخيص:");
+      STUDENT_NOTES.unshift({
+        id: "N_" + Date.now(),
+        title: title,
+        moduleName: "النحو والصرف",
+        content: content || "تلخيص شخصي"
+      });
+      document.getElementById('notes-count').textContent = STUDENT_NOTES.length;
+      renderMyFilesTab(2);
+      showToast("تم حفظ الملاحظة بنجاح!");
     }
 
-    function setPalette(palette) {
-      state.themePalette = palette;
-      if (palette === 'VIOLET') {
-        document.body.classList.add('violet-mode');
-      } else {
-        document.body.classList.remove('violet-mode');
-      }
-      alert('تم تطبيق المظهر المختار!');
-    }
-
-    function filterCourses(sem, btn) {
-      if (btn) {
-        btn.parentElement.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      renderCourses(sem);
-    }
-
-    function filterLectures(mod, btn) {
-      if (btn) {
-        btn.parentElement.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      renderLectures(mod);
-    }
-
-    function filterSchedule(day, btn) {
-      if (btn) {
-        btn.parentElement.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      renderSchedule(day);
-    }
-
-    function triggerRefresh() {
+    // --- Header & Utilities ---
+    function syncAppContent() {
+      const btn = document.getElementById('btn-sync');
       const loader = document.getElementById('global-loader');
-      const btn = document.getElementById('btn-refresh');
       btn.classList.add('rotating');
       loader.style.display = 'flex';
 
       setTimeout(() => {
         btn.classList.remove('rotating');
         loader.style.display = 'none';
-      }, 600);
+        showToast("تمت مزامنة جميع المقاييس والمحاضرات بنجاح!");
+      }, 1000);
     }
 
-    // 8. Initialization
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCourses();
-      renderLectures();
-      renderSchedule('SUN');
-      renderExams();
-      renderAssignments();
-      renderGrades();
-      renderPeers();
-      renderAnnouncements();
-      renderOfflineVault();
+    function toggleAppTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      const themeIcon = document.querySelector('#btn-theme i');
+      themeIcon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      showToast(isDark ? "تم تفعيل الوضع الليلي" : "تم تفعيل الوضع النهاري");
+    }
+
+    function clearOfflineCache() {
+      showToast("تم تنظيف الذاكرة المؤقتة بنجاح");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('android-toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2400);
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // Initialize View
+    window.addEventListener('DOMContentLoaded', () => {
+      navigateAppTo('HOME');
     });
   </script>
 </body>

@@ -1,6 +1,6 @@
 {
-  "name": "Remix Talib Learning Hub",
-  "description": "A unified mobile app and web dashboard for seamless course delivery, student engagement, and real-time content administration.",
+  "name": "طالب | Talib",
+  "description": "منصة طالب الأكاديمية - رفيقك الأكاديمي الشامل لطلبة المدرسة العليا للأساتذة مع المساعد الذكي وخزنة المحاضرات.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
